@@ -1,11 +1,9 @@
-### your site title here
+title: Dorrabb Khan
+description: "Senior DevOps & Cloud Engineer | B.Sc. Robotics and Intelligent Systems '22"
 
-title: Your Name
-description: subtitle | affiliations | motto
-
-baseurl: /gradfolio #name of GitHub repository
-url: "" #custom url to be used instead of GitHub repository
-email: #
+baseurl: /
+url: "https://dorrabbkhan.github.io"
+email: dorrabbk@gmail.com
 
 # Pagination
 paginate: 4
