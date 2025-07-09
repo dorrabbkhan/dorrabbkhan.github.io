@@ -116,6 +116,21 @@ blockquote {
   }
 }
 
+.project-headline {
+  font-size: 2em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+
+  @include media-query($on-palm) {
+    font-size: 2em;
+  }
+}
+
+.project-preview {
+  margin: 2em 2em;
+}
+
 /* Pagination style in index/home page */
 .pagination {
   margin: 2em 0;
