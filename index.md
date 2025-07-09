@@ -16,7 +16,7 @@ I’m a Senior DevOps & Cloud Engineer ☁️ with deep expertise in cloud-nativ
 - **🔁 CI/CD Pipelines:** GitLab, Jenkins, Bitbucket, GitHub
 - **💻 Programming:** JavaScript, Python, Rust, C/C++, Bash
 - **🐳 Containerization & Orchestration:** Docker, Kubernetes, ECS
-- **🎯 Focus:** Agile workflows, scalable, reliable, and cost-efficient solutions
+- **🎯 Focus:** Scalable, reliable, and cost-efficient cloud solutions, agile workflows
 
 ## 👨‍💻 Outside Work
 

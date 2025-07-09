@@ -41,6 +41,7 @@ collections:
     permalink: /projects/:name/
     order:
       - lighthouse.md
+      - smart-glove.md
 
 sass:
   sass_dir: /assets/css/_sass
