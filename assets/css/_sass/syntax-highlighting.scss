@@ -97,7 +97,7 @@ code {
 }
 
 // For dark mode
-@media (prefers-color-scheme: dark) {
+[data-theme="dark"] {
 
 pre.highlight {
   background-color: #263238;
