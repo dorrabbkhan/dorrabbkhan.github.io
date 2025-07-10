@@ -42,6 +42,7 @@ collections:
     order:
       - lighthouse.md
       - smart-glove.md
+      - printnode-printers-explorer.md
 
 sass:
   sass_dir: /assets/css/_sass
