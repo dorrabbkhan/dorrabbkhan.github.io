@@ -58,6 +58,7 @@ This is a Jekyll-based static website that showcases my professional experience,
 - `_includes/`: Reusable components
 - `_posts/`: Blog articles
 - `_projects/`: Project showcases
+- `_tools/`: Tools showcases
 - `assets/`: Static files (CSS, images, etc.)
 - `_pages/`: Additional pages
 
