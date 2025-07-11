@@ -42,7 +42,13 @@ collections:
     order:
       - lighthouse.md
       - smart-glove.md
+
+  tools:
+    output: true
+    permalink: /tools/:name/
+    order:
       - printnode-printers-explorer.md
+      - bitbucket-pr-reviewer.md
 
 sass:
   sass_dir: /assets/css/_sass
