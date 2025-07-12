@@ -123,8 +123,6 @@ Get a code review for your Bitbucket Pull Request using Google Gemini
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <div class="container">
-    <h1>Bitbucket PR Reviewer</h1>
-
     <div class="form-group">
         <label for="bitbucket-pr-url">Bitbucket Pull Request URL:</label>
         <input type="text" id="bitbucket-pr-url" placeholder="e.g., https://bitbucket.org/your-workspace/your-repo/pull-requests/123" required>
