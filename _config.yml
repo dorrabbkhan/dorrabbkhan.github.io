@@ -52,6 +52,7 @@ collections:
       - bitbucket-pr-reviewer.md
       - how-many-layers.md
       - prompt-improver.md
+      - signature-creator.md
 
 sass:
   sass_dir: /assets/css/_sass
