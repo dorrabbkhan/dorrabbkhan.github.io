@@ -163,11 +163,6 @@ Get personalized clothing recommendations based on your current location and the
       word-break: break-word; /* Ensure long values wrap */
   }
 
-  /* Specific emoji styling for special items in the list using ::before */
-  .special-item-emoji {
-      white-space: nowrap; /* Keep emoji and text together */
-  }
-
   .special-item-umbrella::before { content: '☔ '; }
   .special-item-raincoat::before { content: '🧥 '; }
   .special-item-snow-boots::before { content: '👢 '; }
