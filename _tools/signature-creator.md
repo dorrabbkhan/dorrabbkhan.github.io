@@ -8,9 +8,13 @@ Draw your signature below and download it as a transparent PNG!
 
 <div class="container">
     <div class="controls">
-        <label for="penColor">Pen Color:</label>
-        <input type="color" id="penColor" value="#000000">
-
+        <div class="control-group">
+            <input type="color" id="penColor" value="#000000">
+        </div>
+        <div class="control-group">
+            <input type="range" id="penWidth" min="1" max="5" step="0.5" value="2">
+            <span id="penWidthValue" style="display: none;">2</span>
+        </div>
         <button id="undoBtn">Undo</button>
         <button id="clearBtn">Clear</button>
         <button id="downloadBtn">Download Signature</button>
@@ -41,8 +45,13 @@ Draw your signature below and download it as a transparent PNG!
     gap: 10px; /* Space between control elements */
   }
 
+  .control-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
   .controls label {
-    margin-right: 5px;
     font-weight: 600;
   }
 
@@ -148,12 +157,15 @@ Draw your signature below and download it as a transparent PNG!
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
+        const penWidthInput = document.getElementById('penWidth');
+        const penWidthValue = document.getElementById('penWidthValue');
+        
         // Initialize SignaturePad
         signaturePad = new SignaturePad(canvas, {
             backgroundColor: 'rgba(255, 255, 255, 0)', // Transparent background for PNG
             penColor: penColorInput.value,
-            minWidth: 0.5, // Mimic pen pressure
-            maxWidth: 2.5, // Mimic pen pressure
+            minWidth: penWidthInput.value * 0.5, // Scale based on slider value
+            maxWidth: penWidthInput.value * 1.5, // Scale based on slider value
             throttle: 0, // No throttling for smoother drawing
             velocityFilterWeight: 0.7 // Adjust for a more natural feel
         });
@@ -161,6 +173,13 @@ Draw your signature below and download it as a transparent PNG!
         // Event Listeners
         penColorInput.addEventListener('input', (event) => {
             signaturePad.penColor = event.target.value;
+        });
+        
+        penWidthInput.addEventListener('input', (event) => {
+            const width = parseFloat(event.target.value);
+            penWidthValue.textContent = width;
+            signaturePad.minWidth = width * 0.5;
+            signaturePad.maxWidth = width * 1.5;
         });
 
         undoBtn.addEventListener('click', () => {
