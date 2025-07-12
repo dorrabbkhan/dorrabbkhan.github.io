@@ -172,27 +172,12 @@ Get a code review for your Bitbucket Pull Request using Google Gemini
         const reviewResultDiv = document.getElementById('review-result');
         const reviewContentDiv = document.getElementById('review-content');
 
-        // --- Load saved data from local storage on page load ---
-        prUrlInput.value = localStorage.getItem('bitbucketPrUrl') || '';
-        usernameInput.value = localStorage.getItem('bitbucketUsername') || '';
-        appPasswordInput.value = localStorage.getItem('bitbucketAppPassword') || '';
-        geminiApiKeyInput.value = localStorage.getItem('geminiApiKey') || '';
-        // --- End of Load saved data ---
-
         getReviewBtn.addEventListener('click', async () => {
             const prUrl = prUrlInput.value.trim();
             const bitbucketUsername = usernameInput.value.trim();
             const bitbucketAppPassword = appPasswordInput.value.trim();
             const geminiApiKey = geminiApiKeyInput.value.trim();
 
-            // --- Save input values to local storage ---
-            localStorage.setItem('bitbucketPrUrl', prUrl);
-            localStorage.setItem('bitbucketUsername', bitbucketUsername);
-            localStorage.setItem('bitbucketAppPassword', bitbucketAppPassword); // Consider security implications for sensitive data
-            localStorage.setItem('geminiApiKey', geminiApiKey); // Consider security implications for sensitive data
-            // --- End of Save input values ---
-
-            // Clear previous states
             errorMessageDiv.style.display = 'none';
             reviewResultDiv.style.display = 'none';
             reviewContentDiv.innerHTML = '';

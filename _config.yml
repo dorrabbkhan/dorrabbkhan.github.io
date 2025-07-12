@@ -51,6 +51,7 @@ collections:
       - printnode-printers-explorer.md
       - bitbucket-pr-reviewer.md
       - how-many-layers.md
+      - prompt-improver.md
 
 sass:
   sass_dir: /assets/css/_sass
