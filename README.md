@@ -4,7 +4,7 @@ This repository contains the source code for my personal portfolio website, host
 
 ## Overview
 
-This is a Jekyll-based static website that showcases my professional experience, skills, and projects as a DevOps & Cloud Engineer.
+This is a Jekyll-based static website that showcases my professional experience as a DevOps & Cloud Engineer.
 
 ## Features
 
@@ -56,8 +56,6 @@ This is a Jekyll-based static website that showcases my professional experience,
 - `_config.yml`: Site configuration
 - `_layouts/`: HTML templates
 - `_includes/`: Reusable components
-- `_posts/`: Blog articles
-- `_projects/`: Project showcases
 - `assets/`: Static files (CSS, images, etc.)
 - `_pages/`: Additional pages
 

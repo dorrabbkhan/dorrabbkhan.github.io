@@ -34,16 +34,6 @@ compress_html:
   profile: false
   startings: []
 
-#collection
-collections:
-  projects:
-    output: true
-    permalink: /projects/:name/
-    order:
-      - ilm-abroad.md
-      - lighthouse.md
-      - smart-glove.md
-
 sass:
   sass_dir: /assets/css/_sass
   style: compressed
