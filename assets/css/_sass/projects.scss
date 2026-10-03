@@ -15,7 +15,7 @@
 .projectTile {
   /* Minimum width of 200px and grow to fit available space */
   flex: 1 0 200px;
-  border-radius: 15px;
+  border-radius: 18px;
   background: $projectbox;
   height: 200px;
   width: 100%;
@@ -61,8 +61,7 @@
 }
 
 @include media-query($on-phone) {
-  @media screen and (max-width: $on-phone){
-
+  @media screen and (max-width: $on-phone) {
     .projectTile {
       height: 80px;
     }
@@ -78,14 +77,11 @@
     .projectTile:hover a span h2 {
       display: flex;
     }
-
-
   }
 }
 
 @include media-query($on-palm) {
-  @media screen and (max-width: $on-palm){
-
+  @media screen and (max-width: $on-palm) {
     .projectTile {
       height: 100px;
     }
@@ -101,10 +97,8 @@
     .projectTile:hover a span h2 {
       display: flex;
     }
-
   }
 }
-
 
 @supports (display: grid) {
   .gallery {
