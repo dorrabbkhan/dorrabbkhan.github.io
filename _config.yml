@@ -44,16 +44,6 @@ collections:
       - lighthouse.md
       - smart-glove.md
 
-  tools:
-    output: true
-    permalink: /tools/:name/
-    order:
-      - printnode-printers-explorer.md
-      - bitbucket-pr-reviewer.md
-      - how-many-layers.md
-      - prompt-improver.md
-      - signature-creator.md
-
 sass:
   sass_dir: /assets/css/_sass
   style: compressed
