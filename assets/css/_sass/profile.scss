@@ -1,29 +1,30 @@
 /* Profile */
 .profile {
-    border-style: solid;
-    border-color: $light-gray;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 6px;
-    border-radius: 50%;
+  border: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .profile {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .left {
-    float: left;
+  float: left;
 }
 
 .right {
-    float: right;
+  float: right;
 }
 
 // adjust tile sizes on smaller screens
 @include media-query($on-phone) {
-  @media screen and (max-width: $on-phone){
-
+  @media screen and (max-width: $on-phone) {
     .profile {
       width: 40%;
     }
-
   }
 }
