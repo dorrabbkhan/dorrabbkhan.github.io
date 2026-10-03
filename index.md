@@ -20,7 +20,6 @@ I’m a Senior DevOps & Cloud Engineer ☁️ with deep expertise in cloud-nativ
 
 ## 👨‍💻 Outside Work
 
-- ✨ **Sochify Pakistan** – Coming soon... 👀
 - 📚 **Founder of Ilm Abroad** – Helping Pakistani students navigate university, scholarship, and visa processes for studying in Europe.
 - 🚀 **Technical Lead at GDSC Jacobs** – Organized tech events, mentored peers, and led a team to a win in the Google EU Ideathon 2022 and a top 50 finish in the Google Solutions Challenge 2023.
 - 🏛️ **Student Government at Jacobs University** – Elected parliament member and student representative for all engineering & maths programs.
