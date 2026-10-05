@@ -1,6 +1,13 @@
 $base-font-family:
-  -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
-  "Helvetica Neue", Helvetica, Arial, sans-serif;
+  "Inter",
+  -apple-system,
+  BlinkMacSystemFont,
+  sans-serif;
+$heading-font-family:
+  "Inter",
+  -apple-system,
+  BlinkMacSystemFont,
+  sans-serif;
 $base-font-size: 17px;
 $base-font-weight: 400;
 $small-font-size: $base-font-size * 0.875;
@@ -9,14 +16,16 @@ $base-line-height: 1.58;
 $spacing-unit: 30px;
 $light-gray: #86868b;
 $text-color: #1d1d1f;
-$background-color: #ffffff;
+$background-color: #f5ebe0;
 $brand-color: #64b5f6;
 $projectbox-text: #1d1d1f;
 
-// Color scheme for light
-$body-bg: #ffffff;
-$projectbox: #f5f5f7;
-$text-color: #1d1d1f;
+// Color scheme for light (soft beige)
+$body-bg: #f5ebe0;
+$body-bg-secondary: #efe4d6;
+$projectbox: #f0ebe3;
+$text-color: #3d3929;
+$brand-color-light: #c4956a;
 
 // Color scheme for dark modes
 $body-bg-dark: #1c1c1e;
