@@ -1,6 +1,6 @@
-html,
-body {
+html {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -12,12 +12,38 @@ body {
   color: $text-color;
   background: linear-gradient(180deg, $body-bg 0%, $body-bg-secondary 100%);
   background-attachment: fixed;
-  padding: 2em 1em;
+  padding: 3em 1.5em;
   text-rendering: optimizeLegibility;
-  height: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header {
+  text-align: center;
+}
+
+article {
+  text-align: center;
+}
+
+article p {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5em;
 }
 
 [data-theme="dark"] body {
@@ -61,33 +87,32 @@ a {
 }
 
 p a {
-  color: $text-color;
+  color: $brand-color;
   text-decoration: none;
-  background: -webkit-linear-gradient(
-    transparent 90%,
-    lighten($brand-color, 10%) 10%
-  );
-  background: -moz-linear-gradient(
-    transparent 90%,
-    lighten($brand-color, 10%) 10%
-  );
-  background: linear-gradient(transparent 90%, lighten($brand-color, 10%) 10%);
+  position: relative;
+}
 
-  -webkit-box-shadow: inset 0 0 0 0 lighten($brand-color, 10%);
-  box-shadow: inset 0 0 0 0 lighten($brand-color, 10%);
+p a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
 
-  -webkit-transition: box-shadow ease 1s;
-  -moz-transition: box-shadow ease 1s;
-  transition: box-shadow ease 1s;
-  &:hover {
-    color: lighten($background-color, 50%);
-    -webkit-box-shadow: inset 0 -100px 0 0 lighten($brand-color, 10%);
-    box-shadow: inset 0 -100px 0 0 lighten($brand-color, 10%);
-  }
+p a:hover::after {
+  width: 100%;
+}
+
+[data-theme="light"] p a {
+  color: $brand-color-light;
 }
 
 [data-theme="dark"] p a {
-  color: $text-color-dark;
+  color: $brand-color;
 }
 
 figure {
@@ -268,7 +293,7 @@ hr {
     rgba(139, 90, 60, 0.3) 80%,
     transparent 100%
   );
-  margin: 2.5em 0;
+  margin: 2em 0;
 }
 
 [data-theme="dark"] hr {
@@ -282,7 +307,7 @@ hr {
 }
 
 hr.nav-separator {
-  margin: 1.5em 0 2em 0;
+  margin: 2em 0;
 }
 
 /* Horizontal scrolling navbar. From: https://iamsteve.me/blog/horizontal-scrolling-responsive-menu */
@@ -290,7 +315,8 @@ hr.nav-separator {
   white-space: nowrap;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .scroll::-webkit-scrollbar {
@@ -300,27 +326,38 @@ hr.nav-separator {
 /* Button */
 .simplebutton {
   display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
   outline: none;
   cursor: pointer;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 600;
-  border-radius: 8px;
-  padding: 13px 23px;
-  border: 1px solid #222222;
-  transition:
-    box-shadow 0.2s ease 0s,
-    -ms-transform 0.1s ease 0s,
-    -webkit-transform 0.1s ease 0s,
-    transform 0.1s ease 0s;
-  background: #fff;
-  color: #222222;
-  :hover {
-    border-color: #000000;
-    background: #f7f7f7;
-  }
+  font-family: $base-font-family;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 25px;
+  padding: 12px 28px;
+  border: none;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+[data-theme="light"] .simplebutton {
+  color: #5c5347;
+  border: 1.5px solid #8b5a3c;
+}
+
+[data-theme="light"] .simplebutton:hover {
+  background: #8b5a3c;
+  color: #f5ebe0;
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .simplebutton {
+  color: #e5e5e7;
+  border: 1.5px solid #64b5f6;
+}
+
+[data-theme="dark"] .simplebutton:hover {
+  background: #64b5f6;
+  color: #1c1c1e;
+  transform: translateY(-2px);
 }
 
 /* Article list in blog and archive page */

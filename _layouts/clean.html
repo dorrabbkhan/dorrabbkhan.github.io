@@ -1,49 +1,50 @@
 ---
 # layout: compress
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
 
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1" name="viewport">
+    {% seo %} {% include favicon.html %}
 
-        {% seo %}
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css" />
 
-        {% include favicon.html %}
+    {% include mathjax.html %}
 
-        <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
+    <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
+    <script type="text/javascript">
+      (function () {
+        var css = document.createElement("link");
+        css.href = "https://use.fontawesome.com/releases/v6.7.2/css/all.css";
+        css.rel = "stylesheet";
+        css.type = "text/css";
+        document.getElementsByTagName("head")[0].appendChild(css);
+      })();
+    </script>
 
-        {% include mathjax.html %}
+    <script src="{{site.baseurl}}/assets/js/theme-switcher.js"></script>
+  </head>
 
-        <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
-        <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v6.7.2/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+  <body>
+    <div class="cursor-gradient">
+      <div class="cursor-gradient-blob"></div>
+    </div>
+    <main>
+      <article>{{ content }}</article>
+    </main>
 
-        <script src="{{site.baseurl}}/assets/js/theme-switcher.js"></script>
+    <footer>
+      {% include social-footer.html %}
 
-    </head>
+      <button id="theme-toggle" aria-label="Toggle light and dark mode">
+        ☀️
+      </button>
+    </footer>
 
-    <body>
-        <main>
-            <article>
-                {{ content }}
-            </article>
-        </main>
-
-        <footer>
-          <p class="copy">
-            <small> &copy; {{site.title}} {{ site.time | date: '%Y' }} | Powered by Jekyll | Last updated on {{ site.time | date_to_long_string }}
-            </small>
-          </p>
-
-        {% include social-footer.html %}
-
-        <button id="theme-toggle" aria-label="Toggle light and dark mode">☀️</button>
-
-        </footer>
-
-        {% include analytics.html %}
-
-    </body>
-
+    {% include analytics.html %}
+    <script src="{{site.baseurl}}/assets/js/cursor-gradient.js"></script>
+  </body>
 </html>

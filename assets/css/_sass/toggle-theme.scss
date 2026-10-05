@@ -6,27 +6,38 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: $body-bg-dark;
-  color: $text-color;
   border: none;
   cursor: pointer;
   font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 0;
   outline: none;
 }
 
-[data-theme="dark"] #theme-toggle {
-  background-color: $background-color;
+html[data-theme="light"] #theme-toggle {
+  background-color: #f5ebe0 !important;
+  color: #5c5347;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
-#theme-toggle:hover {
-  background-color: $brand-color;
+html[data-theme="dark"] #theme-toggle {
+  background-color: #1c1c1e !important;
+  color: #e5e5e7;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="light"] #theme-toggle:hover {
+  background-color: #efe4d6 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 90, 60, 0.15);
+}
+
+html[data-theme="dark"] #theme-toggle:hover {
+  background-color: #64b5f6 !important;
   transform: translateY(-3px);
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
 }

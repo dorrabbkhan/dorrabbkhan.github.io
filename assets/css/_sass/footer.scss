@@ -1,7 +1,8 @@
 /* Footer */
 footer {
   clear: both;
-  margin-top: 2em;
+  margin-top: auto;
+  padding-top: 2em;
 }
 
 /* Footer navigation links */
@@ -85,10 +86,10 @@ footer {
 
 /* Footer copyrights */
 .copy {
-  color: #86868b;
+  color: $text-color;
   text-align: center;
 }
 
 [data-theme="dark"] .copy {
-  color: #86868b;
+  color: $text-color-dark;
 }
