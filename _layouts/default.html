@@ -9,11 +9,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css" />
 
-    <h1 class="post-headline">{{site.title}}</h1>
-    <h3 class="post-description">{{site.description}}</h3>
-
-    {% include navigation.html %} {% seo %} {% include favicon.html %} {%
-    include mathjax.html %}
+    {% seo %} {% include favicon.html %} {% include mathjax.html %}
 
     <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
     <script type="text/javascript">
@@ -34,17 +30,16 @@
       <div class="cursor-gradient-blob"></div>
     </div>
     <main>
+      <header>
+        <h1 class="post-headline">{{site.title}}</h1>
+        <hr />
+      </header>
       <article>{{ content }}</article>
+      <hr />
+      {% include navigation.html %}
     </main>
 
     <footer>
-      <p class="copy">
-        <small>
-          &copy; {{site.title}} {{ site.time | date: '%Y' }} | Powered by Jekyll
-          | Last updated on {{ site.time | date_to_long_string }}
-        </small>
-      </p>
-
       {% include social-footer.html %}
 
       <button id="theme-toggle" aria-label="Toggle light and dark mode">

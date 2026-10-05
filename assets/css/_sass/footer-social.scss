@@ -8,26 +8,27 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
-  width: 2.125rem;
-  height: 2.125rem;
-  border: 0.125rem solid transparent;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
   padding: 0;
   text-decoration: none;
   text-align: center;
-  color: #fefefe;
-  font-size: 1.5625rem;
+  font-size: 1.25rem;
   font-weight: normal;
-  line-height: 1.5em;
-  border-radius: 1.6875rem;
-  transition: all 0.5s ease;
-  margin-right: 0.25rem;
-  margin-bottom: 0.25rem;
+  line-height: 2.5rem;
+  border-radius: 50%;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+  margin: 0 0.4rem;
+  background: transparent;
 }
 
-.rounded-social-buttons .social-button:hover, .rounded-social-buttons .social-button:focus {
-  -webkit-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-          transform: rotate(360deg);
+.rounded-social-buttons .social-button:hover,
+.rounded-social-buttons .social-button:focus {
+  transform: translateY(-3px);
+  opacity: 0.8;
 }
 
 .rounded-social-buttons,
@@ -44,107 +45,22 @@
   font-size: 25px;
 }
 
-.rounded-social-buttons .social-button.facebook {
-  background: #3b5998;
+/* Dark mode - simple text icons */
+[data-theme="dark"] .rounded-social-buttons .social-button {
+  color: #e5e5e7;
 }
 
-.rounded-social-buttons .social-button.facebook:hover, .rounded-social-buttons .social-button.facebook:focus {
-  color: #3b5998;
-  background: #fefefe;
-  border-color: #3b5998;
+[data-theme="dark"] .rounded-social-buttons .social-button:hover,
+[data-theme="dark"] .rounded-social-buttons .social-button:focus {
+  color: #64b5f6;
 }
 
-.rounded-social-buttons .social-button.linkedin {
-  background: #007bb5;
+/* Light mode - simple text icons */
+[data-theme="light"] .rounded-social-buttons .social-button {
+  color: #5c5347;
 }
 
-.rounded-social-buttons .social-button.linkedin:hover, .rounded-social-buttons .social-button.linkedin:focus {
-  color: #007bb5;
-  background: #fefefe;
-  border-color: #007bb5;
-}
-
-.rounded-social-buttons .social-button.github {
-  background: #000000;
-}
-
-.rounded-social-buttons .social-button.github:hover, .rounded-social-buttons .social-button.github:focus {
-  color: #000000;
-  background: #fefefe;
-  border-color: #000000;
-}
-
-.rounded-social-buttons .social-button.email {
-  background: #60c17d;
-}
-
-.rounded-social-buttons .social-button.email:hover, .rounded-social-buttons .social-button.email:focus {
-  color: #60c17d;
-  background: #fefefe;
-  border-color: #000000;
-}
-
-.rounded-social-buttons .social-button.orcid {
-  background: #a6ce3b;
-}
-
-.rounded-social-buttons .social-button.orcid:hover, .rounded-social-buttons .social-button.orcid:focus {
-  color: #a6ce3b;
-  background: #fefefe;
-  border-color: #a6ce3b;
-}
-
-.rounded-social-buttons .social-button.researchgate {
-  background: #5dd1b0;
-}
-
-.rounded-social-buttons .social-button.researchgate:hover, .rounded-social-buttons .social-button.researchgate:focus {
-  color: #5dd1b0;
-  background: #fefefe;
-  border-color: #5dd1b0;
-}
-
-.rounded-social-buttons .social-button.bluesky {
-  background: #74C0FC;
-}
-
-.rounded-social-buttons .social-button.bluesky:hover, .rounded-social-buttons .social-button.bluesky:focus {
-  color: #74C0FC;
-  background: #fefefe;
-  border-color: #74C0FC;
-}
-
-.rounded-social-buttons .social-button.quora {
-  background: #a82400;
-}
-
-.rounded-social-buttons .social-button.quora:hover, .rounded-social-buttons .social-button.quora:focus {
-  color: #a82400;
-  background: #fefefe;
-  border-color: #a82400;
-}
-
-.rounded-social-buttons .social-button.instagram {
-  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
-  background-clip: padding-box;
-  border: 0.125rem solid #cc2366;
-}
-
-.rounded-social-buttons .social-button.instagram:hover, .rounded-social-buttons .social-button.instagram:focus {
-  color: #a82400;
-  background: #fefefe;
-  border-color: #a82400;
-}
-
-.rounded-social-buttons .social-button.stackoverflow {
-  background: #f48024;
-}
-
-.rounded-social-buttons .social-button.stackoverflow:hover, .rounded-social-buttons .social-button.stackoverflow:focus {
-  color: #f48024;
-  background: #fefefe;
-  border-color: #f48024;
+[data-theme="light"] .rounded-social-buttons .social-button:hover,
+[data-theme="light"] .rounded-social-buttons .social-button:focus {
+  color: #8b5a3c;
 }
