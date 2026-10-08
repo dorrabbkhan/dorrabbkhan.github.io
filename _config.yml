@@ -1,5 +1,5 @@
 title: Dorrabb Khan
-description: "Senior DevOps & Cloud Engineer"
+description: "DevOps & Cloud Engineer"
 baseurl: /
 url: "https://dorrabbkhan.github.io"
 email: dorrabbk@gmail.com
@@ -13,7 +13,6 @@ paginate_path: /blog/page:num/
 linkedin: "dorrabbkhan"
 github: "dorrabbkhan"
 instagram: "dorrabbkhan"
-facebook: "dorrabbkhan"
 
 # Markdown
 highlighter: rouge
