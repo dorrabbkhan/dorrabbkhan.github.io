@@ -4,7 +4,7 @@ permalink: /
 published: true
 ---
 
-Hey! I'm a **DevOps & Cloud Engineer** based in _Munich, Germany_. I love building things that **scale efficiently**.
+Hey! I'm a **Senior DevOps & Cloud Engineer** based in _Munich, Germany_. I love building things that **scale efficiently**.
 
 Currently leading **product development**, **cloud infrastructure** and **DevOps** at [adnymics/Parceldealz](https://www.linkedin.com/company/adnymics/). Also doing a part-time **MSc in AI** because apparently I don't have enough tabs open.
 
