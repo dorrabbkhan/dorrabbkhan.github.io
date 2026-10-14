@@ -7,7 +7,10 @@ footer {
 
 /* Footer navigation links */
 .links-wrapper {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;
   margin: 1.2em 0;
 }
 
@@ -92,6 +95,26 @@ footer {
 
 .links a:hover::after {
   width: 100%;
+}
+
+/* Local time + timezone, fixed top-right corner */
+.local-time {
+  position: fixed;
+  top: 1.1em;
+  right: 1.2em;
+  z-index: 900;
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+
+  @include media-query(600px) {
+    position: absolute;
+    top: 1.4em;
+    right: 1em;
+    font-size: 0.72em;
+    opacity: 0.65;
+  }
 }
 
 /* Footer copyrights */

@@ -36,15 +36,10 @@
       <article>{{ content }}</article>
     </main>
 
-    <footer>
-      {% include social-footer.html %}
+    <footer>{% include social-footer.html %}</footer>
 
-      <button id="theme-toggle" aria-label="Toggle light and dark mode">
-        ☀️
-      </button>
-    </footer>
-
-    {% include analytics.html %}
+    {% include command-palette.html %} {% include analytics.html %}
     <script src="{{site.baseurl}}/assets/js/cursor-gradient.js"></script>
+    <script src="{{site.baseurl}}/assets/js/command-palette.js"></script>
   </body>
 </html>

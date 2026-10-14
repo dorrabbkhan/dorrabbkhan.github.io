@@ -760,3 +760,191 @@ article > .article-preview {
 [data-theme="dark"] .scroll-progress {
   background: linear-gradient(90deg, #60a5fa 0%, #38bdf8 50%, #22d3ee 100%);
 }
+
+/* Command palette trigger (top-left corner) */
+.command-palette-trigger {
+  position: fixed;
+  top: 1.1em;
+  left: 1.2em;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.4em 0.8em;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: inherit;
+  font: inherit;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background 0.25s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .command-palette-kbd {
+    font-family: inherit;
+    font-size: 0.85em;
+    opacity: 0.55;
+  }
+
+  /* Icon-only + non-sticky under 600px — no keyboard shortcut to hint at */
+  @include media-query(600px) {
+    position: absolute;
+    padding: 0.45em 0.6em;
+    gap: 0;
+
+    span,
+    .command-palette-kbd {
+      display: none;
+    }
+  }
+}
+
+[data-theme="light"] .command-palette-trigger {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(139, 90, 60, 0.2);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.75);
+  }
+}
+
+/* Command palette (Ctrl/Cmd+K) */
+.command-palette {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.command-palette-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.command-palette-panel {
+  position: relative;
+  width: min(560px, calc(100vw - 2em));
+  margin: 30vh auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(30, 30, 34, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 16px 60px rgba(0, 0, 0, 0.45),
+    0 0 60px rgba(56, 189, 248, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.command-palette-input {
+  display: block;
+  width: 100%;
+  padding: 0.9em 1.1em;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: inherit;
+  font: inherit;
+  font-size: 1em;
+  outline: none;
+
+  &::placeholder {
+    opacity: 0.45;
+  }
+}
+
+.command-palette-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.4em;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.command-palette-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  padding: 0.55em 0.8em;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &.active {
+    background: rgba(56, 189, 248, 0.13);
+  }
+}
+
+.command-palette-type {
+  font-size: 0.78em;
+  opacity: 0.5;
+  text-transform: capitalize;
+}
+
+.command-palette-empty {
+  padding: 1.2em;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.command-palette-footer {
+  display: flex;
+  gap: 1.2em;
+  justify-content: center;
+  padding: 0.55em;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.72em;
+  opacity: 0.55;
+
+  kbd {
+    display: inline-block;
+    padding: 0.05em 0.4em;
+    margin: 0 0.15em;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom-width: 2px;
+    font-family: inherit;
+  }
+}
+
+[data-theme="light"] .command-palette-backdrop {
+  background: rgba(60, 50, 40, 0.28);
+}
+
+[data-theme="light"] .command-palette-panel {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(139, 90, 60, 0.16);
+  box-shadow:
+    0 16px 60px rgba(139, 90, 60, 0.18),
+    0 0 60px rgba(196, 154, 108, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="light"] .command-palette-input {
+  border-bottom-color: rgba(139, 90, 60, 0.12);
+}
+
+[data-theme="light"] .command-palette-item.active {
+  background: rgba(139, 90, 60, 0.12);
+}
+
+[data-theme="light"] .command-palette-footer {
+  border-top-color: rgba(139, 90, 60, 0.12);
+
+  kbd {
+    border-color: rgba(139, 90, 60, 0.25);
+  }
+}
