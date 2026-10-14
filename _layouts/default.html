@@ -31,12 +31,13 @@
     </div>
     <main>
       <header>
-        <h1 class="post-headline">{{site.title}}</h1>
+        <h1 class="post-headline">
+          <a href="{{site.baseurl}}/">{{site.title}}</a>
+        </h1>
+        {% include navigation.html %}
         <hr />
       </header>
       <article>{{ content }}</article>
-      <hr />
-      {% include navigation.html %}
     </main>
 
     <footer>

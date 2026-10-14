@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<div class="scroll-progress"></div>
+
+<h1 class="post-title">{{ page.title }}</h1>
+
+<p class="post-meta">
+  <time datetime="{{ page.date | date_to_xmlschema }}">
+    {{ page.date | date: "%B %-d, %Y" }}
+  </time>
+</p>
+
+<div class="post-content">{{ content }}</div>
+
+<hr />
+
+<div class="cta-buttons">
+  <a href="{{site.baseurl}}/blog">Read my blog</a>
+  <a
+    href="{{site.baseurl}}/assets/docs/CV-Muhammad_Dorrabb_Khan_Niazi-EN.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    >Get my CV</a
+  >
+</div>
+
+<script src="{{site.baseurl}}/assets/js/blog-effects.js"></script>

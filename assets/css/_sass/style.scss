@@ -241,24 +241,78 @@ blockquote {
 /* Pagination style in index/home page */
 .pagination {
   margin: 2em 0;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6em;
 
-  a {
-    &:hover {
-      background-color: transparent;
-      color: #333;
-    }
+  /* current page (always flanked by prev/next items) */
+  span:not(:first-child):not(:last-child) {
+    font-weight: 600;
   }
 
-  a,
-  span {
-    padding: 7px 18px;
-    border: 1px solid #eee;
-    margin-left: -4px;
-    margin-right: -4px;
-    background-color: transparent;
-    display: inline-block;
+  /* disabled prev/next */
+  span:first-child,
+  span:last-child {
+    opacity: 0.35;
   }
+}
+
+/* Pill button style shared by pagination and homepage CTAs */
+.pagination a,
+.pagination span,
+.cta-buttons a {
+  padding: 0.45em 1.1em;
+  border-radius: 20px;
+  display: inline-block;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+  color: #5c5347;
+  border: 1px solid rgba(139, 90, 60, 0.2);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Roomier padding for homepage CTAs only */
+.cta-buttons a {
+  padding: 0.7em 1.6em;
+}
+
+.pagination a:hover,
+.cta-buttons a:hover {
+  transform: translateY(-2px);
+  background: #8b5a3c;
+  color: #f5ebe0;
+  border-color: transparent;
+}
+
+.pagination span:not(:first-child):not(:last-child) {
+  border-color: #8b5a3c;
+  background: rgba(139, 90, 60, 0.08);
+}
+
+/* Dark theme */
+[data-theme="dark"] .pagination a,
+[data-theme="dark"] .pagination span,
+[data-theme="dark"] .cta-buttons a {
+  color: #e5e5e7;
+  border: 1px solid rgba(100, 181, 246, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .pagination a:hover,
+[data-theme="dark"] .cta-buttons a:hover {
+  background: #64b5f6;
+  color: #1c1c1e;
+  border-color: transparent;
+}
+
+[data-theme="dark"] .pagination span:not(:first-child):not(:last-child) {
+  border-color: #64b5f6;
+  background: rgba(56, 189, 248, 0.1);
 }
 
 /* Add video class for iframes to make them responsive */
@@ -308,6 +362,11 @@ hr {
 
 hr.nav-separator {
   margin: 2em 0;
+}
+
+/* Even spacing around the navbar: match .links-wrapper margins */
+header hr {
+  margin-top: 1.2em;
 }
 
 /* Horizontal scrolling navbar. From: https://iamsteve.me/blog/horizontal-scrolling-responsive-menu */
@@ -360,7 +419,344 @@ hr.nav-separator {
   transform: translateY(-2px);
 }
 
+/* CTA buttons on the homepage */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
 /* Article list in blog and archive page */
 .article-list {
-  margin: 1em 0;
+  /* negative top margin cancels the header hr's 2em bottom margin,
+     so the first preview sits flush against the divider */
+  margin: -2em 0 1em;
+
+  hr {
+    margin: 0;
+  }
+}
+
+.article-preview {
+  position: relative;
+  padding: 2em 1.5em;
+  border-radius: 12px;
+  isolation: isolate;
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* radial spotlight follows the cursor via --x/--y set in blog-effects.js */
+    background:
+      radial-gradient(
+        240px circle at var(--x, 50%) var(--y, 50%),
+        rgba(139, 90, 60, 0.15),
+        transparent 65%
+      ),
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(139, 90, 60, 0.08) 20%,
+        rgba(139, 90, 60, 0.08) 80%,
+        transparent 100%
+      );
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  /* glowing seams at the left/right edges that draw in on hover */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    transform: scaleY(0);
+    pointer-events: none;
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+    background:
+      linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(139, 90, 60, 0.45) 50%,
+          transparent 100%
+        )
+        left / 2px 100% no-repeat,
+      linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(139, 90, 60, 0.45) 50%,
+          transparent 100%
+        )
+        right / 2px 100% no-repeat;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Homepage preview: cancel the 2em hr margins above and below
+   so the hover area sits flush against both dividers */
+article > .article-preview {
+  margin: -2em 0;
+}
+
+[data-theme="dark"] .article-preview::before {
+  background:
+    radial-gradient(
+      240px circle at var(--x, 50%) var(--y, 50%),
+      rgba(56, 189, 248, 0.15),
+      transparent 65%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(56, 189, 248, 0.08) 20%,
+      rgba(56, 189, 248, 0.08) 80%,
+      transparent 100%
+    );
+}
+
+[data-theme="dark"] .article-preview::after {
+  background:
+    linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(56, 189, 248, 0.45) 50%,
+        transparent 100%
+      )
+      left / 2px 100% no-repeat,
+    linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(56, 189, 248, 0.45) 50%,
+        transparent 100%
+      )
+      right / 2px 100% no-repeat;
+}
+
+/* Staggered fade-up entrance for blog list items */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.article-list .article-preview {
+  animation: fade-up 0.6s ease both;
+}
+
+/* nth-of-type counts divs only, skipping the hr separators */
+.article-list div:nth-of-type(2) {
+  animation-delay: 0.1s;
+}
+
+.article-list div:nth-of-type(3) {
+  animation-delay: 0.2s;
+}
+
+.article-list div:nth-of-type(4) {
+  animation-delay: 0.3s;
+}
+
+.article-list div:nth-of-type(n + 5) {
+  animation-delay: 0.4s;
+}
+
+/* Blog post page */
+.post-title {
+  position: relative;
+  z-index: 0;
+  font-size: 2em;
+  margin-top: 0em;
+  margin-bottom: 0.5em;
+  text-align: center;
+
+  @include media-query($on-palm) {
+    font-size: 2em;
+  }
+}
+
+/* Title hover: cursor spotlight + wash fading top-to-bottom into the content */
+.post-title::before {
+  content: "";
+  position: absolute;
+  /* same box as the seams: top flush with the hr, hugging the title width */
+  top: calc(-2rem - 2px);
+  bottom: -1.8em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 1.5em);
+  z-index: -1;
+  border-radius: 14px 14px 0 0;
+  /* backdrop-filter keeps the blur inside the box, so corners stay rounded
+     (same technique as .article-preview) */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* fade the backdrop blur out toward the bottom so there's no hard cutoff */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 55%,
+    transparent 90%
+  );
+  mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 90%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      300px circle at var(--x, 50%) var(--y, 50%),
+      rgba(139, 90, 60, 0.18),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(139, 90, 60, 0.2) 0%,
+      rgba(139, 90, 60, 0.06) 50%,
+      transparent 100%
+    );
+}
+
+.post-title:hover::before {
+  opacity: 1;
+}
+
+[data-theme="dark"] .post-title::before {
+  background:
+    radial-gradient(
+      300px circle at var(--x, 50%) var(--y, 50%),
+      rgba(56, 189, 248, 0.16),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(56, 189, 248, 0.18) 0%,
+      rgba(56, 189, 248, 0.05) 50%,
+      transparent 100%
+    );
+}
+
+/* Glowing edge seams on the post title, like the blog previews */
+.post-title::after {
+  content: "";
+  position: absolute;
+  /* align with the hr (margin-bottom: 2em in base font = 2rem) */
+  top: -2rem;
+  bottom: -1.8em;
+  left: 50%;
+  transform: translateX(-50%) scaleY(0.5);
+  transform-origin: top center;
+  width: calc(100% + 1.5em);
+  border-radius: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+  background:
+    linear-gradient(
+        180deg,
+        rgba(196, 154, 108, 0.45) 0%,
+        rgba(196, 154, 108, 0.45) 25%,
+        rgba(196, 154, 108, 0.15) 55%,
+        transparent 85%
+      )
+      left / 2px 100% no-repeat,
+    linear-gradient(
+        180deg,
+        rgba(196, 154, 108, 0.45) 0%,
+        rgba(196, 154, 108, 0.45) 25%,
+        rgba(196, 154, 108, 0.15) 55%,
+        transparent 85%
+      )
+      right / 2px 100% no-repeat;
+}
+
+.post-title:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scaleY(1);
+}
+
+[data-theme="dark"] .post-title::after {
+  background:
+    linear-gradient(
+        180deg,
+        rgba(56, 189, 248, 0.45) 0%,
+        rgba(56, 189, 248, 0.45) 25%,
+        rgba(56, 189, 248, 0.15) 55%,
+        transparent 85%
+      )
+      left / 2px 100% no-repeat,
+    linear-gradient(
+        180deg,
+        rgba(56, 189, 248, 0.45) 0%,
+        rgba(56, 189, 248, 0.45) 25%,
+        rgba(56, 189, 248, 0.15) 55%,
+        transparent 85%
+      )
+      right / 2px 100% no-repeat;
+}
+
+.post-meta {
+  text-align: center;
+  opacity: 0.7;
+  font-size: 0.9em;
+  margin-top: 0;
+}
+
+.post-content {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-align: left;
+  }
+}
+
+/* Scroll progress bar on post pages */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, #8b5a3c 0%, #a67c52 50%, #c49a6c 100%);
+  transition: width 0.1s linear;
+}
+
+[data-theme="dark"] .scroll-progress {
+  background: linear-gradient(90deg, #60a5fa 0%, #38bdf8 50%, #22d3ee 100%);
 }

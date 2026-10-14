@@ -2,14 +2,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("theme-toggle");
   const htmlElement = document.documentElement;
 
+  function setFavicon(theme) {
+    const suffix = theme === "light" ? "-light" : "";
+    const svgIcon = document.querySelector(
+      'link[rel="icon"][type="image/svg+xml"]',
+    );
+    const pngIcon = document.querySelector(
+      'link[rel="icon"][type="image/png"]',
+    );
+    if (svgIcon) svgIcon.href = `/assets/favicon/favicon${suffix}.svg`;
+    if (pngIcon) pngIcon.href = `/assets/favicon/favicon${suffix}-96x96.png`;
+  }
+
   function setTheme(theme) {
     htmlElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
+    setFavicon(theme);
     if (toggleButton) {
       toggleButton.innerHTML = theme === "dark" ? "☀️" : "🌙";
       toggleButton.setAttribute(
         "aria-label",
-        theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+        theme === "dark" ? "Switch to light mode" : "Switch to dark mode",
       );
     }
   }

@@ -2,6 +2,20 @@
 layout: default
 ---
 
+<div class="article-list">
+  {% for post in paginator.posts %}
+  <div class="article-preview">
+    <h2>
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </h2>
+    <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+    {{ post.excerpt }}
+  </div>
+  {% unless forloop.last %}
+  <hr />
+  {% endunless %} {% endfor %}
+</div>
+
 <!-- pagination -->
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
@@ -32,3 +46,5 @@ layout: default
   {% endif %}
 </div>
 {% endif %}
+
+<script src="{{site.baseurl}}/assets/js/blog-effects.js"></script>
