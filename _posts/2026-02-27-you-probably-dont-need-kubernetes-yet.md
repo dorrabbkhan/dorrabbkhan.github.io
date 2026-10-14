@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "You probably don't need Kubernetes (yet)"
+description: "We're conditioned to architect for Google-scale on day one - but a boring stack of managed containers serves millions of requests. Adopt Kubernetes only when you hit real breaking points."
 date: 2026-02-27
 ---
 
@@ -8,7 +9,7 @@ date: 2026-02-27
 
 Every time a new project spins up, someone reaches for a Helm chart. We've convinced ourselves that if we aren't running a multi-node Kubernetes cluster from day one, we're doing it wrong. The reality is that prematurely optimizing for scale just results in a bloated cloud bill and an unnecessarily complex deployment pipeline.
 
-### The Power of "Boring" Architecture
+## The Power of "Boring" Architecture
 
 There is massive value in pushing simple microservice limits before introducing heavy orchestration. Boring architecture is predictable and doesn't require a dedicated team to troubleshoot at 2 AM.
 
@@ -33,7 +34,7 @@ Here is a simplified look at the kind of "boring" configuration that handles ser
 
 With a setup like this, upgrading a node pool simply doesn't exist. You push code, your pipeline triggers a rolling update, and traffic shifts gracefully.
 
-### Finding the Real Tipping Point
+## Finding the Real Tipping Point
 
 So when do you actually need Kubernetes?
 

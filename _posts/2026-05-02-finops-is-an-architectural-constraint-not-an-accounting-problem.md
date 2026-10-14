@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "FinOps is an architectural constraint, not an accounting problem"
+description: "Treat cloud cost like latency or availability - a strict architectural constraint baked into IaC with lifecycle policies and automated teardowns, not an afterthought for the finance team."
 date: 2026-05-02
 ---
 
@@ -10,7 +11,7 @@ Developers treat the AWS bill like a problem for the finance team, right up unti
 
 That approach is fundamentally broken. You wouldn't push code that degrades system latency by three seconds and tell the product team you'll simply keep an eye on it. Cost shouldn't be treated any differently. Shifting the conversation from "how to save money" to "how to build cost-aware systems" fundamentally changes the way you design architecture.
 
-### Baking Cost into the Architecture
+## Baking Cost into the Architecture
 
 In my experience with AWS and Terraform, looking at infrastructure through this exact lens is how I managed to slash our core AWS infrastructure spend by 73%. When scaling the AWS backend architecture for our SaaS at adnymics, I realized that meaningful cost reduction was about enforcing strict lifecycle boundaries at the code level.
 

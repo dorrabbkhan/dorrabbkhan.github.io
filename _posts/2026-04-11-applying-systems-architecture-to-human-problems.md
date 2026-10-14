@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Applying system architecture to human problems"
+description: "Scaling a mentorship program follows the same rules as scaling cloud infrastructure: cache common answers, load-balance your availability, and architect away single points of failure."
 date: 2026-04-11
 ---
 
@@ -10,7 +11,7 @@ Designing cloud-native backends teaches you a lot about fault tolerance and reso
 
 When I was designing containerized dev environments, the goal was strictly operational: reduce the local onboarding setup time for new engineers. Recently, I realized this exact platform engineering principle applies perfectly to navigating human bottlenecks.
 
-### Platform Engineering for Human Friction
+## Platform Engineering for Human Friction
 
 In 2025, I founded Ilm Abroad Pakistan, an educational project to help students navigate the complex university and visa application processes for Germany. At first, I was doing what every junior engineer does with a new server: manually provisioning everything. I answered the same visa questions and reviewed the same application formatting over and over.
 
@@ -18,7 +19,7 @@ It didn't scale. The manual onboarding was causing dropped packets (missed email
 
 To fix it, I had to treat the mentorship program like developer platform engineering. I built out structured documentation and standardized "runbooks" for the students. Just like a good CI/CD pipeline removes friction from shipping code, creating self-serve guides removed the friction from the university application process.
 
-### Load Balancing Human Availability
+## Load Balancing Human Availability
 
 Leading an 80+ member Google Developer Student Club during my Bachelor's taught me that "human availability" is a finite, easily exhausted resource.
 

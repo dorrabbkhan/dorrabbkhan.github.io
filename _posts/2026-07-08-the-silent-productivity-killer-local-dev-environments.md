@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The silent productivity killer: Local dev environments"
+description: "If onboarding takes a 30-page wiki and three days of debugging, your local setup is the real bottleneck. Containerize everything and treat DevEx as a core infrastructure metric."
 date: 2026-07-08
 ---
 
@@ -8,13 +9,13 @@ date: 2026-07-08
 
 We spend endless cycles optimizing CI/CD pipelines to shave off two minutes of build time, but we completely ignore the fact that engineers spend hours fighting their own laptops just to boot the stack. This is the hidden tax of bad developer platform engineering.
 
-### The Compound Interest of Fast Feedback
+## The Compound Interest of Fast Feedback
 
 Over time working in DevOps, it became blatantly obvious that raw cloud infrastructure efficiency means little if the local feedback loop is crawling. Every time a developer has to debug a local PostgreSQL version mismatch or untangle an undocumented environment variable, you lose momentum.
 
 Cleaning up deployment platforms and standardizing the local stack is directly correlated with preserving developer sanity. A frictionless local setup compounds into massive productivity gains because developers are actually writing code, not playing sysadmin.
 
-### Containerizing the Friction Away
+## Containerizing the Friction Away
 
 The solution is strict, reproducible environments. In my experience, migrating to fully containerized dev environments fundamentally changes the engineering culture. When we adopted `docker-compose` dev setups, we managed to streamline onboarding and accelerate our deployment cycles significantly, just because "it works on my machine tho" stopped being a valid excuse.
 
@@ -51,7 +52,7 @@ volumes:
 
 One `docker-compose up` and the entire stack is ready.
 
-### Tools to Fix Your DevEx
+## Tools to Fix Your DevEx
 
 If you want to strip the friction out of your local setups, here are the tools actually worth your time:
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "If you can't explain it to the Board, it won't ship"
+description: "The hardest part of senior engineering isn't the code - it's translating technical trade-offs into cost, risk, and speed for stakeholders. A framework and ADR blueprint for winning buy-in."
 date: 2026-03-18
 ---
 
@@ -8,7 +9,7 @@ date: 2026-03-18
 
 We spend years mastering our tech stack, but almost zero time learning how to talk about it. When you transition into a senior role, the bottleneck stops being your ability to write a Terraform module. The real bottleneck becomes your ability to explain _why_ that module is necessary to a stakeholder who just wants the feature shipped, or a Board staring at a massive cloud bill.
 
-### The Translation Framework
+## The Translation Framework
 
 When you talk to non-technical stakeholders, you have to completely drop the engineering jargon and focus exclusively on business impact: cost, risk, and speed.
 
@@ -18,7 +19,7 @@ To win technical arguments, frame them as business solutions. If you want to spe
 
 Over time, I also noticed that metaphors do a lot of the heavy lifting in these conversations. Stakeholders don't need the precise mechanics; they need a mental model they can reason with. A well-chosen metaphor hands them that model in seconds, and once they have it, all the relevant technical details you present actually stick.
 
-### A blueprint for business-driven ADRs
+## A blueprint for business-driven ADRs
 
 A good Architecture Decision Record (ADR) shouldn't just be a log of what the engineering team decided to do. It needs to be a document that translates complex technical reality into clear business context.
 

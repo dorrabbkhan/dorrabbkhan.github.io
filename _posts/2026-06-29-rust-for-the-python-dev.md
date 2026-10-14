@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Rust for the Python dev: shifting your mental model"
+description: "Moving from Python to Rust means unlearning runtime habits - the compiler forces explicit error handling and memory safety, buying you predictable, high-throughput infrastructure code."
 date: 2026-06-29
 ---
 
@@ -12,13 +13,13 @@ When I was working on migrating a legacy codebase from Python 2.7 to modern Pyth
 
 Contrast that with my experience engineering high-throughput microservices from scratch with Rust. The strict, compiler-driven discipline of Rust forces you to confront every possible failure state before the code even compiles. It is a massive hurdle at first, but it completely changes your operational baseline long-term.
 
-### Beyond Raw Speed
+## Beyond Raw Speed
 
 We all know Rust is incredibly fast. But when you are designing systems, raw compute speed is only one piece of the puzzle. The real game-changers for high-throughput cloud messaging are memory safety and predictable concurrency.
 
 In Python, spinning up a thread pool to process an SQS queue is syntactically easy, but ensuring thread-safe state sharing is a constant battle against the Global Interpreter Lock and subtle race conditions. In Rust, if your concurrency model is flawed, the compiler simply refuses to build it.
 
-### The Compile-Time Shift
+## The Compile-Time Shift
 
 Let's look at a minimal example of polling an AWS SQS queue. In a traditional Python approach, you might wrap a `boto3` call in a broad `try/except` block. Rust forces a much safer paradigm:
 

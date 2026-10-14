@@ -31,10 +31,15 @@
     </div>
     <main>
       <header>
+        {% if page.layout == "post" or page.layout == "project" %}
+        <div class="post-headline">
+          <a href="{{site.baseurl}}/">{{site.title}}</a>
+        </div>
+        {% else %}
         <h1 class="post-headline">
           <a href="{{site.baseurl}}/">{{site.title}}</a>
         </h1>
-        {% include navigation.html %}
+        {% endif %} {% include navigation.html %}
         <hr />
       </header>
       <article>{{ content }}</article>

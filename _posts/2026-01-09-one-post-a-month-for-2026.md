@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Setting the bar low: One post a month in 2026"
+description: "Ditching the habit of hoarding half-written notes: a resolution to publish one real post every month in 2026."
 date: 2026-01-09
 ---
 

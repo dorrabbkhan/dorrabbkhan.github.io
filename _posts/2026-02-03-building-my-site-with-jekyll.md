@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Building my site with Jekyll"
+description: "Skipping the complex cloud-native stack and building a blog with Jekyll and GitHub Pages: zero hosting costs, zero databases, and a frictionless Markdown workflow."
 date: 2026-02-03
 ---
 
