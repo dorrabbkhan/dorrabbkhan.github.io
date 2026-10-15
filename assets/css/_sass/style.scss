@@ -1,6 +1,8 @@
 html {
   height: 100%;
   overflow-x: hidden;
+  /* Painted so mobile overscroll reveals the page background, not white */
+  background: linear-gradient(180deg, $body-bg 0%, $body-bg-secondary 100%);
 }
 
 body {
@@ -44,6 +46,14 @@ article p {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1.5em;
+}
+
+html[data-theme="dark"] {
+  background: linear-gradient(
+    180deg,
+    $body-bg-dark 0%,
+    $body-bg-dark-secondary 100%
+  );
 }
 
 [data-theme="dark"] body {
