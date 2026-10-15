@@ -3,6 +3,10 @@ footer {
   clear: both;
   margin-top: auto;
   padding-top: 2em;
+  max-width: $content-width;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 /* Footer navigation links */

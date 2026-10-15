@@ -6,9 +6,8 @@ html {
 }
 
 body {
-  max-width: $content-width;
   font-family: $base-font-family;
-  margin: 0 auto;
+  margin: 0;
   line-height: $base-line-height;
   font-size: $base-font-size;
   color: $text-color;
@@ -18,7 +17,6 @@ body {
   text-rendering: optimizeLegibility;
   min-height: 100vh;
   box-sizing: border-box;
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   transition:
@@ -31,6 +29,9 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: $content-width;
+  margin: 0 auto;
+  width: 100%;
 }
 
 header {
