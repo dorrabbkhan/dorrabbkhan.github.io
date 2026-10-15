@@ -101,32 +101,3 @@
   </a>
   {%- endif -%}
 </div>
-
-<p class="local-time"><span id="local-time"></span></p>
-<script>
-  (function () {
-    var el = document.getElementById("local-time");
-    if (!el) return;
-    var tz = "Europe/Berlin";
-    var timeFmt = new Intl.DateTimeFormat("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      timeZone: tz,
-    });
-    var tzFmt = new Intl.DateTimeFormat("en", {
-      timeZoneName: "short",
-      timeZone: tz,
-    });
-    function tick() {
-      var now = new Date();
-      var zone = tzFmt.formatToParts(now).find(function (p) {
-        return p.type === "timeZoneName";
-      });
-      el.textContent =
-        "Berlin · " + timeFmt.format(now) + (zone ? " " + zone.value : "");
-    }
-    tick();
-    setInterval(tick, 1000);
-  })();
-</script>

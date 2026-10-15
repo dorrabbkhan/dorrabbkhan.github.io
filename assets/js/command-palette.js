@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
       type: i.type || "action",
       action: i.action,
       newTab: i.newTab,
+      confirm: i.confirm,
     };
   });
 
@@ -49,7 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
           (i === active ? " active" : "") +
           '" data-index="' +
           i +
-          '" role="option">' +
+          '"' +
+          // Stagger entrance on first open only — instant while filtering
+          (q
+            ? ""
+            : ' style="animation-delay:' + Math.min(i * 20, 150) + 'ms"') +
+          ' role="option">' +
           "<span>" +
           escapeHtml(r.title) +
           "</span>" +
@@ -74,13 +80,32 @@ document.addEventListener("DOMContentLoaded", function () {
   function choose(i) {
     var r = results[i];
     if (!r) return;
+    var el = list.querySelectorAll(".command-palette-item")[i];
+
+    // Flash the picked item, run the action, then close
+    function done(fn) {
+      if (el) {
+        el.classList.add("executing");
+        if (r.confirm) {
+          var label = el.querySelector("span");
+          if (label) label.textContent = r.confirm;
+        }
+      }
+      setTimeout(function () {
+        if (fn) fn();
+        close();
+      }, 200);
+    }
+
     if (r.action === "theme") {
-      var btn = document.getElementById("theme-toggle");
-      if (btn) btn.click();
-      close();
+      done(function () {
+        var btn = document.getElementById("theme-toggle");
+        if (btn) btn.click();
+      });
     } else if (r.action === "email" && window.__cmdkEmail) {
-      window.location.href = "mailto:" + atob(window.__cmdkEmail);
-      close();
+      done(function () {
+        window.location.href = "mailto:" + atob(window.__cmdkEmail);
+      });
     } else if (r.action === "random") {
       var posts = items.filter(function (i) {
         return i.type === "post";
@@ -90,22 +115,32 @@ document.addEventListener("DOMContentLoaded", function () {
           posts[Math.floor(Math.random() * posts.length)].url;
       }
     } else if (r.action === "top") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      close();
+      done(function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     } else if (r.action === "copy") {
-      navigator.clipboard.writeText(window.location.href);
-      close();
+      done(function () {
+        navigator.clipboard.writeText(window.location.href);
+      });
     } else if (r.url) {
       if (r.newTab) {
-        window.open(r.url, "_blank", "noopener noreferrer");
-        close();
+        done(function () {
+          window.open(r.url, "_blank", "noopener noreferrer");
+        });
       } else {
         window.location.href = r.url;
       }
     }
   }
 
+  var closeTimer = null;
+
   function open() {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+    palette.classList.remove("closing");
     palette.hidden = false;
     input.value = "";
     render();
@@ -114,8 +149,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function close() {
-    palette.hidden = true;
+    if (palette.hidden || palette.classList.contains("closing")) return;
+    palette.classList.add("closing");
     document.body.style.overflow = "";
+    closeTimer = setTimeout(function () {
+      palette.hidden = true;
+      palette.classList.remove("closing");
+      closeTimer = null;
+    }, 180);
   }
 
   function isOpen() {
