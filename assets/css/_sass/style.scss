@@ -2,7 +2,7 @@ html {
   height: 100%;
   overflow-x: hidden;
   /* Painted so mobile overscroll reveals the page background, not white */
-  background: linear-gradient(180deg, $body-bg 0%, $body-bg-secondary 100%);
+  background-color: $body-bg;
 }
 
 body {
@@ -11,8 +11,6 @@ body {
   line-height: $base-line-height;
   font-size: $base-font-size;
   color: $text-color;
-  background: linear-gradient(180deg, $body-bg 0%, $body-bg-secondary 100%);
-  background-attachment: fixed;
   padding: 3em 1.5em;
   text-rendering: optimizeLegibility;
   min-height: 100vh;
@@ -22,6 +20,24 @@ body {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -100vh;
+  bottom: -100vh;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    $body-bg 0%,
+    $body-bg 33.33%,
+    $body-bg-secondary 66.67%,
+    $body-bg-secondary 100%
+  );
 }
 
 main {
@@ -36,6 +52,7 @@ main {
 
 header {
   text-align: center;
+  position: relative;
 }
 
 article {
@@ -50,21 +67,21 @@ article p {
 }
 
 html[data-theme="dark"] {
-  background: linear-gradient(
-    180deg,
-    $body-bg-dark 0%,
-    $body-bg-dark-secondary 100%
-  );
+  background-color: $body-bg-dark;
 }
 
 [data-theme="dark"] body {
+  color: $text-color-dark;
+}
+
+[data-theme="dark"] body::before {
   background: linear-gradient(
     180deg,
     $body-bg-dark 0%,
+    $body-bg-dark 33.33%,
+    $body-bg-dark-secondary 66.67%,
     $body-bg-dark-secondary 100%
   );
-  background-attachment: fixed;
-  color: $text-color-dark;
 }
 
 h1,
@@ -211,10 +228,27 @@ blockquote {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 4s ease infinite;
-  text-shadow:
-    0 0 40px rgba(56, 189, 248, 0.5),
-    0 0 80px rgba(56, 189, 248, 0.3),
-    0 0 120px rgba(56, 189, 248, 0.15);
+  text-shadow: 0 0 36px rgba(56, 189, 248, 0.45);
+}
+
+/* Dark headline halo: painted inside the page (fades out before the top edge)
+   so it doesn't get clipped at the body boundary during overscroll */
+[data-theme="dark"] header::before {
+  content: "";
+  position: absolute;
+  top: -2.8em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 115%;
+  height: calc(100% + 3.5em);
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse 50% 45% at 50% 42%,
+    rgba(56, 189, 248, 0.16) 0%,
+    rgba(56, 189, 248, 0.07) 40%,
+    transparent 70%
+  );
 }
 
 @keyframes gradient-shift {
