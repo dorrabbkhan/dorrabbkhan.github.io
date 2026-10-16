@@ -17,9 +17,9 @@ When I'm not in the terminal, you'll find me on the football pitch, at the gym, 
 ---
 
 <div class="cta-buttons">
-  <a href="{{site.baseurl}}/blog">Read my blog</a>
+  <a href="{{ '/blog' | relative_url }}">Read my blog</a>
   <a
-    href="{{site.baseurl}}/assets/docs/CV-Muhammad_Dorrabb_Khan_Niazi-EN.pdf"
+    href="{{ '/assets/docs/CV-Muhammad_Dorrabb_Khan_Niazi-EN.pdf' | relative_url }}"
     target="_blank"
     rel="noopener noreferrer"
     >Get my CV</a

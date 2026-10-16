@@ -5,7 +5,9 @@
 }
 
 .rounded-social-buttons .social-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   cursor: pointer;
   width: 2.5rem;
@@ -31,36 +33,19 @@
   opacity: 0.8;
 }
 
-.rounded-social-buttons,
-.fa-facebook-f,
-.fa-linkedin,
-.fa-github,
-.fa-orcid,
-.fa-researchgate,
-.fa-bluesky,
-.fa-envelope,
-.fa-quora,
-.fa-instagram,
-.fa-stack-overflow {
-  font-size: 25px;
+.rounded-social-buttons .social-button svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+  fill: currentColor;
 }
 
-/* Dark mode - simple text icons */
-[data-theme="dark"] .rounded-social-buttons .social-button {
-  color: #e5e5e7;
+/* Icons follow body text, accent on hover — both themes */
+.rounded-social-buttons .social-button {
+  color: var(--text);
 }
 
-[data-theme="dark"] .rounded-social-buttons .social-button:hover,
-[data-theme="dark"] .rounded-social-buttons .social-button:focus {
-  color: #64b5f6;
-}
-
-/* Light mode - simple text icons */
-[data-theme="light"] .rounded-social-buttons .social-button {
-  color: #5c5347;
-}
-
-[data-theme="light"] .rounded-social-buttons .social-button:hover,
-[data-theme="light"] .rounded-social-buttons .social-button:focus {
-  color: #8b5a3c;
+.rounded-social-buttons .social-button:hover,
+.rounded-social-buttons .social-button:focus {
+  color: var(--accent);
 }

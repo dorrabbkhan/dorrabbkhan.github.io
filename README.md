@@ -25,7 +25,7 @@ This is a Jekyll-based static website that showcases my professional experience 
 - **Markup**: Markdown, HTML5
 - **JavaScript**: Vanilla JS (no frameworks) for the command palette, theme switcher, and cursor effects
 - **Plugins**: `jekyll-seo-tag`, `jekyll-paginate`, `jekyll-email-protect`, `jekyll-target-blank`
-- **Extras**: Font Awesome icons, MathJax, Google Fonts (Inter)
+- **Extras**: Inter (self-hosted)
 - **Version Control**: Git
 
 ## Local Development
@@ -53,7 +53,7 @@ This is a Jekyll-based static website that showcases my professional experience 
 3. Run the development server
 
    ```
-   bundle exec jekyll clean && bundle exec jekyll serve --incremental --trace --baseurl ""
+   bundle exec jekyll clean && bundle exec jekyll serve --incremental --trace
    ```
 
 4. View the site at `http://localhost:4000`

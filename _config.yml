@@ -1,6 +1,6 @@
 title: Dorrabb Khan
 description: "DevOps & Cloud Engineer"
-baseurl: /
+baseurl: ""
 url: "https://dorrabbkhan.github.io"
 email: dorrabbk@gmail.com
 
@@ -19,47 +19,7 @@ highlighter: rouge
 markdown: kramdown
 
 # Tracker
-analytics:
 goatcounter: "dorrabb"
-
-# optimization -> compress.html
-compress_html:
-  clippings:
-    [
-      html,
-      div,
-      p,
-      ul,
-      td,
-      h1,
-      h2,
-      h3,
-      h4,
-      link,
-      meta,
-      footer,
-      nav,
-      img,
-      header,
-      hr,
-      br,
-      head,
-      style,
-      li,
-      ul,
-      ol,
-      time,
-      main,
-      script,
-      title,
-    ]
-  comments: ["<!-- ", " -->"]
-  endings: [all]
-  ignore:
-    envs: [local]
-  blanklines: false
-  profile: false
-  startings: []
 
 sass:
   sass_dir: /assets/css/_sass

@@ -24,4 +24,50 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", updateProgress);
     updateProgress();
   }
+
+  // "Copy" button on every fenced code block (div.highlighter-rouge wraps
+  // Rouge's div.highlight > pre.highlight > code; inline code is a bare
+  // <code class="... highlighter-rouge"> and is skipped automatically)
+  document.querySelectorAll("div.highlighter-rouge").forEach(function (block) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "copy-code-button";
+    button.textContent = "Copy";
+    button.setAttribute("aria-label", "Copy code to clipboard");
+
+    button.addEventListener("click", function () {
+      const code = block.querySelector("pre code, pre");
+      if (!code) return;
+
+      const done = function () {
+        button.textContent = "Copied";
+        button.classList.add("copied");
+        setTimeout(function () {
+          button.textContent = "Copy";
+          button.classList.remove("copied");
+        }, 1500);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code.innerText).then(done);
+      } else {
+        // Fallback for non-secure contexts
+        const textarea = document.createElement("textarea");
+        textarea.value = code.innerText;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand("copy");
+          done();
+        } catch (e) {
+          button.textContent = "Error";
+        }
+        document.body.removeChild(textarea);
+      }
+    });
+
+    block.appendChild(button);
+  });
 });

@@ -7,7 +7,8 @@ layout: default
   class="profile {{ page.profile.align }}"
   width="33.33%"
   src="{{ page.profile.image | prepend: '/assets/images/' | relative_url }}"
+  alt="{{ site.title }}"
 />
 {% endif %} {% endif %} {{ content }}
 
-<script src="{{site.baseurl}}/assets/js/blog-effects.js"></script>
+<script src="{{ '/assets/js/blog-effects.js' | relative_url }}"></script>

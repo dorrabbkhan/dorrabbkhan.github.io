@@ -8,6 +8,8 @@ $heading-font-family:
   -apple-system,
   BlinkMacSystemFont,
   sans-serif;
+$mono-font-family:
+  ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace;
 $base-font-size: 17px;
 $base-font-weight: 400;
 $small-font-size: $base-font-size * 0.875;
@@ -15,20 +17,53 @@ $base-line-height: 1.58;
 
 $spacing-unit: 30px;
 $light-gray: #86868b;
-$text-color: #1d1d1f;
-$background-color: #f5ebe0;
-$brand-color: #64b5f6;
 $projectbox-text: #1d1d1f;
 
-// Color scheme for light (soft beige)
+// ── Colour identity ─────────────────────────────────────────────────
+// All accent colours in the partials read from the CSS custom
+// properties defined at the bottom of this file (var(--accent),
+// var(--accent-strong), var(--accent-mid), var(--accent-soft),
+// var(--bg), var(--bg-2), var(--text)) instead of hard-coded hexes.
+//
+// >>> SHARED ACCENT: to give both themes one identity, set
+//     --accent (and matching --accent-strong / --accent-mid shades)
+//     to the same hue in the :root and [data-theme="dark"] blocks
+//     below, then rebuild. <<<
+
+// Color scheme for light (soft beige / brown accents)
 $body-bg: #f5ebe0;
 $body-bg-secondary: #efe4d6;
 $projectbox: #f0ebe3;
 $text-color: #5c5347;
-$brand-color-light: #c4956a;
+$brand-color-light: #8b5a3c; // light --accent
+$accent-light-strong: #c49a6c; // light --accent-strong (lightest brown)
+$accent-light-mid: #a67c52; // light --accent-mid (gradient midpoint)
 
-// Color scheme for dark modes
+// Color scheme for dark modes (blue / cyan accents)
 $body-bg-dark: #1c1c1e;
 $body-bg-dark-secondary: #2c2c2e;
 $projectbox-dark: #2c2c2e;
 $text-color-dark: #e5e5e7;
+$brand-color: #64b5f6; // dark --accent
+$accent-dark-strong: #22d3ee; // dark --accent-strong (cyan)
+$accent-dark-mid: #38bdf8; // dark --accent-mid (gradient midpoint)
+
+:root {
+  --bg: #{$body-bg};
+  --bg-2: #{$body-bg-secondary};
+  --text: #{$text-color};
+  --accent: #{$brand-color-light};
+  --accent-strong: #{$accent-light-strong};
+  --accent-mid: #{$accent-light-mid};
+  --accent-soft: #{rgba($brand-color-light, 0.2)};
+}
+
+html[data-theme="dark"] {
+  --bg: #{$body-bg-dark};
+  --bg-2: #{$body-bg-dark-secondary};
+  --text: #{$text-color-dark};
+  --accent: #{$brand-color};
+  --accent-strong: #{$accent-dark-strong};
+  --accent-mid: #{$accent-dark-mid};
+  --accent-soft: #{rgba($brand-color, 0.2)};
+}

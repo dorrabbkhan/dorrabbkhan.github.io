@@ -6,7 +6,7 @@ layout: default
   {% for post in paginator.posts %}
   <div class="article-preview">
     <h2>
-      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
     </h2>
     <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
     {{ post.excerpt }}
@@ -20,31 +20,24 @@ layout: default
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
   {% if paginator.previous_page %}
-  <a
-    href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"
-    >&laquo; Prev</a
-  >
+  <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a>
   {% else %}
   <span>&laquo; Prev</span>
   {% endif %} {% for page in (1..paginator.total_pages) %} {% if page ==
   paginator.page %}
   <span>{{ page }}</span>
   {% elsif page == 1 %}
-  <a href="{{site.baseurl}}/blog">{{ page }}</a>
+  <a href="{{ '/blog' | relative_url }}">{{ page }}</a>
   {% else %}
-  <a
-    href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}"
+  <a href="{{ site.paginate_path | replace: ':num', page | relative_url }}"
     >{{ page }}</a
   >
   {% endif %} {% endfor %} {% if paginator.next_page %}
-  <a
-    href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"
-    >Next &raquo;</a
-  >
+  <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
   {% else %}
   <span>Next &raquo;</span>
   {% endif %}
 </div>
 {% endif %}
 
-<script src="{{site.baseurl}}/assets/js/blog-effects.js"></script>
+<script src="{{ '/assets/js/blog-effects.js' | relative_url }}"></script>

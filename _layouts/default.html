@@ -7,37 +7,35 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css" />
+    <link
+      rel="preload"
+      href="{{ '/assets/css/fonts/inter-latin-var.woff2' | relative_url }}"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {% include theme-init.html %}
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
 
-    {% seo %} {% include favicon.html %} {% include mathjax.html %}
+    {% seo %} {% include favicon.html %}
 
-    <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
-    <script type="text/javascript">
-      (function () {
-        var css = document.createElement("link");
-        css.href = "https://use.fontawesome.com/releases/v6.7.2/css/all.css";
-        css.rel = "stylesheet";
-        css.type = "text/css";
-        document.getElementsByTagName("head")[0].appendChild(css);
-      })();
-    </script>
-
-    <script src="{{site.baseurl}}/assets/js/theme-switcher.js"></script>
+    <script src="{{ '/assets/js/theme-switcher.js' | relative_url }}"></script>
   </head>
 
   <body>
+    <a class="skip-link" href="#content">Skip to content</a>
     <div class="cursor-gradient">
       <div class="cursor-gradient-blob"></div>
     </div>
-    <main>
+    <main id="content" tabindex="-1">
       <header>
         {% if page.layout == "post" or page.layout == "project" %}
         <div class="post-headline">
-          <a href="{{site.baseurl}}/">{{site.title}}</a>
+          <a href="{{ '/' | relative_url }}">{{site.title}}</a>
         </div>
         {% else %}
         <h1 class="post-headline">
-          <a href="{{site.baseurl}}/">{{site.title}}</a>
+          <a href="{{ '/' | relative_url }}">{{site.title}}</a>
         </h1>
         {% endif %} {% include navigation.html %}
         <hr />
@@ -49,7 +47,7 @@
 
     {% include local-time.html %} {% include command-palette.html %} {% include
     analytics.html %}
-    <script src="{{site.baseurl}}/assets/js/cursor-gradient.js"></script>
-    <script src="{{site.baseurl}}/assets/js/command-palette.js"></script>
+    <script src="{{ '/assets/js/cursor-gradient.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/command-palette.js' | relative_url }}"></script>
   </body>
 </html>

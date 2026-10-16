@@ -1,23 +1,26 @@
 //CSS adapted from: https://github.com/spsarolkar/rouge-theme-preview
 
-//For light mode
+// For light mode — warm off-white block that fits the beige palette.
+// Padding and border-radius come from the base `pre` rule in style.scss.
 pre.highlight {
-  background-color: #ffffff;
-  padding: 7px 7px 7px 10px;
-  // border: 20px solid yellowgreen;
+  background-color: #fbf6ef;
+  border: 1px solid var(--accent-soft);
   -moz-box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
   margin: 20px 0 20px 0;
-  overflow: auto;
 }
 
+// Inline code: subtle warm tint, no border.
+// (font-family/font-size come from the base rules in style.scss)
 code {
-  font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
-  color: #000;
-  background-color: #ffffff;
-  border-radius: 1px;
+  color: var(--text);
+  background-color: color-mix(in srgb, var(--accent) 9%, transparent);
+}
+
+pre code {
+  color: inherit;
+  background-color: transparent;
 }
 
 .highlight,
@@ -25,35 +28,37 @@ code {
   color: #586e75;
 }
 .highlight .err {
-  color: #002b36;
-  background-color: #dc322f;
+  color: #ffffff;
+  background-color: #c92a22;
 }
+/* Colours below are darkened Solarized variants so every token keeps
+   >= 4.5:1 contrast on the #fbf6ef code background */
 .highlight .c,
 .highlight .cd,
 .highlight .cm,
 .highlight .c1,
 .highlight .cs {
-  color: #657b83;
+  color: #596e76;
 }
 .highlight .cp {
-  color: #b58900;
+  color: #7d5f00;
 }
 .highlight .nt {
-  color: #b58900;
+  color: #7d5f00;
 }
 .highlight .o,
 .highlight .ow {
-  color: #93a1a1;
+  color: #5f7477;
 }
 .highlight .p,
 .highlight .pi {
-  color: #93a1a1;
+  color: #5f7477;
 }
 .highlight .gi {
-  color: #859900;
+  color: #4c6f00;
 }
 .highlight .gd {
-  color: #dc322f;
+  color: #bf2f26;
 }
 .highlight .gh {
   color: #268bd2;
@@ -65,16 +70,16 @@ code {
 .highlight .kp,
 .highlight .kr,
 .highlight .kv {
-  color: #6c71c4;
+  color: #595cb3;
 }
 .highlight .kc {
-  color: #cb4b16;
+  color: #b84512;
 }
 .highlight .kt {
-  color: #cb4b16;
+  color: #b84512;
 }
 .highlight .kd {
-  color: #cb4b16;
+  color: #b84512;
 }
 .highlight .s,
 .highlight .sb,
@@ -84,28 +89,28 @@ code {
 .highlight .sh,
 .highlight .sx,
 .highlight .s1 {
-  color: #859900;
+  color: #4c6f00;
 }
 .highlight .sr {
-  color: #2aa198;
+  color: #1a7566;
 }
 .highlight .si {
-  color: #d33682;
+  color: #c2186b;
 }
 .highlight .se {
-  color: #d33682;
+  color: #c2186b;
 }
 .highlight .nn {
-  color: #b58900;
+  color: #7d5f00;
 }
 .highlight .nc {
-  color: #b58900;
+  color: #7d5f00;
 }
 .highlight .no {
-  color: #b58900;
+  color: #7d5f00;
 }
 .highlight .na {
-  color: #268bd2;
+  color: #1a6fae;
 }
 .highlight .m,
 .highlight .mf,
@@ -115,31 +120,32 @@ code {
 .highlight .mo,
 .highlight .mb,
 .highlight .mx {
-  color: #859900;
+  color: #4c6f00;
 }
 .highlight .ss {
-  color: #859900;
+  color: #4c6f00;
 }
 
 // For dark mode
 [data-theme="dark"] {
+  // Same padding/border-radius as light come from the base `pre` rule.
   pre.highlight {
     background-color: #263238;
-    padding: 7px 7px 7px 10px;
-    // border: 20px solid yellowgreen;
+    border: 1px solid var(--accent-soft);
     -moz-box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
     box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
     margin: 20px 0 20px 0;
-    overflow: auto;
   }
 
   code {
-    font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
     color: #c9d1d9;
     background-color: #263238;
-    border-radius: 1px;
+  }
+
+  pre code {
+    color: inherit;
+    background-color: transparent;
   }
 
   .highlight .c,
@@ -352,6 +358,5 @@ code {
   }
   .highlight {
     color: #f8f8f2;
-    background-color: #49483e;
   }
 }

@@ -29,7 +29,7 @@ footer {
   position: relative;
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.06),
-    0 0 40px rgba(56, 189, 248, 0.04),
+    0 0 40px color-mix(in srgb, var(--accent-mid) 4%, transparent),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition:
     box-shadow 0.4s ease,
@@ -44,24 +44,24 @@ footer {
 .links:hover {
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.08),
-    0 0 60px rgba(56, 189, 248, 0.08),
+    0 0 60px color-mix(in srgb, var(--accent-mid) 8%, transparent),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
 }
 
 [data-theme="light"] .links {
   background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(139, 90, 60, 0.1);
+  border: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
   box-shadow:
-    0 4px 24px rgba(139, 90, 60, 0.06),
-    0 0 40px rgba(139, 90, 60, 0.03),
+    0 4px 24px color-mix(in srgb, var(--accent) 6%, transparent),
+    0 0 40px color-mix(in srgb, var(--accent) 3%, transparent),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 [data-theme="light"] .links:hover {
   box-shadow:
-    0 8px 32px rgba(139, 90, 60, 0.1),
-    0 0 60px rgba(139, 90, 60, 0.06),
+    0 8px 32px color-mix(in srgb, var(--accent) 10%, transparent),
+    0 0 60px color-mix(in srgb, var(--accent) 6%, transparent),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
@@ -119,14 +119,4 @@ footer {
     font-size: 0.72em;
     opacity: 0.65;
   }
-}
-
-/* Footer copyrights */
-.copy {
-  color: $text-color;
-  text-align: center;
-}
-
-[data-theme="dark"] .copy {
-  color: $text-color-dark;
 }
