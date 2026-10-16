@@ -617,17 +617,20 @@ article > .article-preview {
   animation-delay: 0.4s;
 }
 
-/* Fade-up entrance for homepage and post pages */
+/* Fade-up entrance for homepage and post pages.
+   'backwards' (not 'both') so no transform lingers after the animation —
+   a residual transform would trap position:fixed children (scroll-progress,
+   command palette) inside the animated element instead of the viewport */
 header {
-  animation: fade-up 0.5s ease both;
+  animation: fade-up 0.5s ease backwards;
 }
 
 article {
-  animation: fade-up 0.5s ease 0.1s both;
+  animation: fade-up 0.5s ease 0.1s backwards;
 }
 
 footer {
-  animation: fade-up 0.5s ease 0.2s both;
+  animation: fade-up 0.5s ease 0.2s backwards;
 }
 
 /* Blog post page */
