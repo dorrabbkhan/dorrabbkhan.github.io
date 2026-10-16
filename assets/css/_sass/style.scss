@@ -715,9 +715,17 @@ footer {
 
 .post-meta {
   text-align: center;
-  opacity: 0.7;
+  /* Explicit muted colour (>=4.5:1 per theme) instead of opacity: 0.7,
+     which also faded nested links below the contrast threshold. */
+  color: var(--text-muted);
   font-size: 0.9em;
   margin-top: 0;
+}
+
+/* Links inside the muted meta line keep the accent colour
+   (>=4.5:1 on --bg in both themes). */
+.post-meta a {
+  color: var(--accent);
 }
 
 .post-content {
@@ -1095,15 +1103,12 @@ div.highlighter-rouge:hover .copy-code-button,
   border: 1px solid var(--accent-soft);
   font-size: 0.75em;
   line-height: 1.6;
-  opacity: 0.85;
-  transition:
-    border-color 0.2s ease,
-    opacity 0.2s ease;
+  /* No opacity here — it pushed the accent link colour below 4.5:1 */
+  transition: border-color 0.2s ease;
 }
 
 .tag-pill:hover {
   border-color: var(--accent);
-  opacity: 1;
 }
 
 /* Tag index page (/blog/tags/) */

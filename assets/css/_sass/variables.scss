@@ -52,6 +52,8 @@ $accent-dark-mid: #38bdf8; // dark --accent-mid (gradient midpoint)
   --bg: #{$body-bg};
   --bg-2: #{$body-bg-secondary};
   --text: #{$text-color};
+  /* >=4.5:1 on --bg and --bg-2; used for .post-meta instead of opacity */
+  --text-muted: #6f6257;
   --accent: #{$brand-color-light};
   --accent-strong: #{$accent-light-strong};
   --accent-mid: #{$accent-light-mid};
@@ -62,6 +64,8 @@ html[data-theme="dark"] {
   --bg: #{$body-bg-dark};
   --bg-2: #{$body-bg-dark-secondary};
   --text: #{$text-color-dark};
+  /* >=4.5:1 on --bg and --bg-2 */
+  --text-muted: #9e9ea4;
   --accent: #{$brand-color};
   --accent-strong: #{$accent-dark-strong};
   --accent-mid: #{$accent-dark-mid};

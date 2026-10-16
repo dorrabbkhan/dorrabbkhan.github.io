@@ -52,6 +52,10 @@ exclude:
   - LICENSE.md
   - tools
 
+# Feed: keep every post so the whole archive can be imported elsewhere
+feed:
+  posts_limit: 100
+
 plugins:
   - jekyll-seo-tag
   - jekyll-feed

@@ -38,7 +38,8 @@ pre code {
 .highlight .cm,
 .highlight .c1,
 .highlight .cs {
-  color: #596e76;
+  color: #4f626a; /* 5.9:1 on #fbf6ef — muted slate, italic */
+  font-style: italic;
 }
 .highlight .cp {
   color: #7d5f00;
@@ -48,11 +49,11 @@ pre code {
 }
 .highlight .o,
 .highlight .ow {
-  color: #5f7477;
+  color: #5a7075; /* 4.9:1 on #fbf6ef */
 }
 .highlight .p,
 .highlight .pi {
-  color: #5f7477;
+  color: #5a7075;
 }
 .highlight .gi {
   color: #4c6f00;
@@ -61,7 +62,7 @@ pre code {
   color: #bf2f26;
 }
 .highlight .gh {
-  color: #268bd2;
+  color: #66b3e8; /* 6.4:1 on #002b36 */
   background-color: #002b36;
   font-weight: bold;
 }
@@ -148,30 +149,22 @@ pre code {
     background-color: transparent;
   }
 
+  /* Muted slate comments — 5.0:1 on the #263238 block background
+     (the old #75715e was only 2.7:1) */
   .highlight .c,
-  .highlight .cd {
-    color: #75715e;
+  .highlight .cd,
+  .highlight .cm,
+  .highlight .c1,
+  .highlight .cp,
+  .highlight .cs {
+    color: #8fa3ad;
     font-style: italic;
-  }
-  .highlight .cm {
-    color: #75715e;
-    font-style: italic;
-  }
-  .highlight .c1 {
-    color: #75715e;
-    font-style: italic;
-  }
-  .highlight .cp {
-    color: #75715e;
-    font-weight: bold;
   }
   .highlight .cs {
-    color: #75715e;
     font-weight: bold;
-    font-style: italic;
   }
   .highlight .err {
-    color: #960050;
+    color: #ff7ad9; /* 8.5:1 on #1e0010 */
     background-color: #1e0010;
   }
   .highlight .gi {
@@ -183,23 +176,23 @@ pre code {
     background-color: #493131;
   }
   .highlight .ge {
-    color: #000000;
+    color: #f8f8f2;
     font-style: italic;
   }
   .highlight .gr {
-    color: #aa0000;
+    color: #ff7b72; /* 5.2:1 on #263238 */
   }
   .highlight .gt {
-    color: #aa0000;
+    color: #ff7b72;
   }
   .highlight .gh {
-    color: #999999;
+    color: #a8a8a8; /* 5.5:1 on #263238 */
   }
   .highlight .go {
-    color: #888888;
+    color: #9e9e9e; /* 4.9:1 on #263238 */
   }
   .highlight .gp {
-    color: #555555;
+    color: #9e9e9e;
   }
   .highlight .gs {
     font-weight: bold;
@@ -232,16 +225,17 @@ pre code {
     color: #66d9ef;
     font-weight: bold;
   }
+  /* Lightened Monokai pink — #f92672 was only 3.5:1 on #263238 */
   .highlight .kn {
-    color: #f92672;
+    color: #ff7fa8; /* 5.6:1 on #263238 */
     font-weight: bold;
   }
   .highlight .ow {
-    color: #f92672;
+    color: #ff7fa8;
     font-weight: bold;
   }
   .highlight .o {
-    color: #f92672;
+    color: #ff7fa8;
     font-weight: bold;
   }
   .highlight .mf {
@@ -354,7 +348,7 @@ pre code {
     font-weight: bold;
   }
   .highlight .nt {
-    color: #f92672;
+    color: #ff7fa8;
   }
   .highlight {
     color: #f8f8f2;

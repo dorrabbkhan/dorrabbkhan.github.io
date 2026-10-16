@@ -8,7 +8,14 @@ permalink: /about/
 
 <img
   class="about-photo"
-  src="{{ '/assets/images/personal-photo.png' | relative_url }}"
+  src="{{ '/assets/images/personal-photo-256.webp' | relative_url }}"
+  srcset="
+    {{ '/assets/images/personal-photo-256.webp' | relative_url }} 1x,
+    {{ '/assets/images/personal-photo-512.webp' | relative_url }} 2x
+  "
+  width="112"
+  height="112"
+  fetchpriority="high"
   alt="Portrait of Dorrabb Khan"
 />
 

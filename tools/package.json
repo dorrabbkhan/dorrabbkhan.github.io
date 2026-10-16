@@ -1,0 +1,12 @@
+{
+  "name": "site-tools",
+  "private": true,
+  "type": "module",
+  "description": "Build-time asset tooling for the site (not part of the Jekyll build; directory is excluded in _config.yml).",
+  "scripts": {
+    "resize-photo": "node resize-photo.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.34.0"
+  }
+}
