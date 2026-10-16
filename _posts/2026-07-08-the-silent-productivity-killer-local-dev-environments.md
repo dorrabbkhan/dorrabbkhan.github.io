@@ -3,6 +3,7 @@ layout: post
 title: "The silent productivity killer: Local dev environments"
 description: "If onboarding takes a 30-page wiki and three days of debugging, your local setup is the real bottleneck. Containerize everything and treat DevEx as a core infrastructure metric."
 date: 2026-07-08
+tags: [devex, docker]
 ---
 
 **TL;DR:** If setting up a local dev environment requires a 30-page Confluence wiki and three days of debugging, your architecture is broken. The hidden tax of manual setups destroys developer momentum. Containerize everything, enforce reproducible environments, and treat Developer Experience (DevEx) as a core infrastructure metric.

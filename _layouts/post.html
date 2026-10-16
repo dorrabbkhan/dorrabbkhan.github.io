@@ -10,20 +10,45 @@ layout: default
   <time datetime="{{ page.date | date_to_xmlschema }}">
     {{ page.date | date: "%B %-d, %Y" }}
   </time>
+  · {% include reading-time.html post=page %}
 </p>
+
+{% include tag-pills.html post=page %}
 
 <div class="post-content">{{ content }}</div>
 
 <hr />
 
-<div class="cta-buttons">
-  <a href="{{ '/blog' | relative_url }}">Read my blog</a>
-  <a
-    href="{{ '/assets/docs/CV-Muhammad_Dorrabb_Khan_Niazi-EN.pdf' | relative_url }}"
-    target="_blank"
-    rel="noopener noreferrer"
-    >Get my CV</a
-  >
+<div class="post-footer">
+  <div class="author-box">
+    {%- assign name_parts = site.title | split: " " -%}
+    <div class="author-box-avatar" aria-hidden="true">
+      {{ name_parts[0] | slice: 0 }}{{ name_parts[1] | slice: 0 }}
+    </div>
+    <p class="author-box-name">{{ site.title }}</p>
+    <p class="author-box-bio">Senior DevOps &amp; Cloud Engineer in Munich</p>
+    <p class="author-box-links">
+      <a href="{{ '/about/' | relative_url }}">About</a>
+      <a
+        href="{{ '/assets/docs/CV-Muhammad_Dorrabb_Khan_Niazi-EN.pdf' | relative_url }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >CV</a
+      >
+    </p>
+  </div>
+
+  <nav class="post-nav" aria-label="Post navigation">
+    {%- if page.previous %}
+    <a class="post-nav-prev" href="{{ page.previous.url | relative_url }}"
+      >&larr; {{ page.previous.title }}</a
+    >
+    {%- endif %} {%- if page.next %}
+    <a class="post-nav-next" href="{{ page.next.url | relative_url }}"
+      >{{ page.next.title }} &rarr;</a
+    >
+    {%- endif %}
+  </nav>
 </div>
 
 <script src="{{ '/assets/js/blog-effects.js' | relative_url }}"></script>

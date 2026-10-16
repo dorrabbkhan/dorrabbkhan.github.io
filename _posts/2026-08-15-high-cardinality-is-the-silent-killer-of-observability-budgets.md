@@ -3,6 +3,7 @@ layout: post
 title: "High cardinality is the silent killer of observability budgets"
 description: "One innocent tag can explode into millions of billable time series. How dropping high-cardinality labels at scrape time can cut observability spend dramatically."
 date: 2026-08-15
+tags: [observability, prometheus, finops]
 ---
 
 **TL;DR:** Everyone loves adding custom tags to their logs and metrics right up until the high cardinality of your labels multiply into millions of billable time series. Fixing (and preventing) this requires strict engineering discipline.

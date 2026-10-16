@@ -3,6 +3,7 @@ layout: post
 title: "You probably don't need Kubernetes (yet)"
 description: "We're conditioned to architect for Google-scale on day one - but a boring stack of managed containers serves millions of requests. Adopt Kubernetes only when you hit real breaking points."
 date: 2026-02-27
+tags: [kubernetes, aws, devops]
 ---
 
 **TL;DR:** We're conditioned to architect for Google-scale on day one, which usually just leads to massive compute waste. You can serve millions of requests and maintain strict SLAs using a "boring" stack like managed containers, only adopting Kubernetes when you hit genuine breaking points.

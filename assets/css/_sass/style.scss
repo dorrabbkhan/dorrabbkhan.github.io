@@ -276,31 +276,9 @@ blockquote {
   margin: 2em 2em;
 }
 
-/* Pagination style in index/home page */
-.pagination {
-  margin: 2em 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.6em;
-
-  /* current page (always flanked by prev/next items) */
-  span:not(:first-child):not(:last-child) {
-    font-weight: 600;
-  }
-
-  /* disabled prev/next */
-  span:first-child,
-  span:last-child {
-    opacity: 0.35;
-  }
-}
-
-/* Pill button style shared by pagination and homepage CTAs */
-.pagination a,
-.pagination span,
+/* Pill button style for the homepage CTAs */
 .cta-buttons a {
-  padding: 0.45em 1.1em;
+  padding: 0.7em 1.6em;
   border-radius: 20px;
   display: inline-block;
   backdrop-filter: blur(12px);
@@ -314,12 +292,6 @@ blockquote {
   background: rgba(255, 255, 255, 0.4);
 }
 
-/* Roomier padding for homepage CTAs only */
-.cta-buttons a {
-  padding: 0.7em 1.6em;
-}
-
-.pagination a:hover,
 .cta-buttons a:hover {
   transform: translateY(-2px);
   background: var(--accent);
@@ -327,14 +299,7 @@ blockquote {
   border-color: transparent;
 }
 
-.pagination span:not(:first-child):not(:last-child) {
-  border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 9%, transparent);
-}
-
 /* Dark theme: only the pill surface differs — accent vars handle the rest */
-[data-theme="dark"] .pagination a,
-[data-theme="dark"] .pagination span,
 [data-theme="dark"] .cta-buttons a {
   background: rgba(255, 255, 255, 0.05);
 }
@@ -439,6 +404,10 @@ header hr {
 
   h2 {
     margin-bottom: 0;
+  }
+
+  h2 a {
+    transition: color 0.3s ease;
   }
 
   &::before {
@@ -1087,4 +1056,235 @@ div.highlighter-rouge:hover .copy-code-button,
   .copy-code-button {
     opacity: 1;
   }
+}
+
+/* Small links under the archive list (tags index, RSS) */
+.blog-meta {
+  margin-top: 2.5em;
+}
+
+/* Tag pills on posts and in the archive list */
+.tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4em;
+  margin: 0.5em 0 0.9em;
+}
+
+.tag-pill {
+  padding: 0.12em 0.75em;
+  border-radius: 999px;
+  border: 1px solid var(--accent-soft);
+  font-size: 0.75em;
+  line-height: 1.6;
+  opacity: 0.85;
+  transition:
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.tag-pill:hover {
+  border-color: var(--accent);
+  opacity: 1;
+}
+
+/* Tag index page (/blog/tags/) */
+.tag-index {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.tag-index h2 {
+  margin-top: 1.8em;
+  font-size: 1.2em;
+}
+
+.tag-count {
+  font-size: 0.75em;
+  font-weight: 400;
+  opacity: 0.55;
+}
+
+.tag-index ul {
+  list-style: none;
+  margin: 0.6em 0 0;
+  padding: 0;
+}
+
+.tag-index li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5em;
+  padding: 0.3em 0;
+}
+
+.tag-index li .post-meta {
+  text-align: right;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* Post footer: author box + prev/next navigation */
+.author-box {
+  position: relative;
+  isolation: isolate;
+  text-align: center;
+  margin-bottom: 2.2em;
+  padding: 1.8em 1.5em 1.5em;
+  border-radius: 12px;
+  border: 1px solid var(--accent-soft);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease;
+
+  /* radial spotlight following the cursor, same as .article-preview */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: radial-gradient(
+      240px circle at var(--x, 50%) var(--y, 50%),
+      color-mix(in srgb, var(--accent) 15%, transparent),
+      transparent 65%
+    );
+  }
+
+  &:hover {
+    border-color: var(--accent);
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+[data-theme="dark"] .author-box {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .author-box::before {
+  background: radial-gradient(
+    240px circle at var(--x, 50%) var(--y, 50%),
+    color-mix(in srgb, var(--accent-mid) 15%, transparent),
+    transparent 65%
+  );
+}
+
+.author-box p {
+  margin-bottom: 0.25em;
+}
+
+/* Monogram circle standing in for a photo */
+.author-box-avatar {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 0.9em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.05em;
+  letter-spacing: 0.03em;
+  color: var(--bg);
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    color-mix(in srgb, var(--accent) 55%, transparent)
+  );
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 3px var(--accent-soft);
+}
+
+.author-box-name {
+  font-weight: 600;
+  font-size: 1.05em;
+}
+
+.author-box-bio {
+  opacity: 0.75;
+  font-size: 0.9em;
+}
+
+.author-box-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.6em;
+  font-size: 0.9em;
+  margin-top: 0.9em;
+}
+
+.author-box-links a {
+  display: inline-block;
+  padding: 0.35em 1.1em;
+  border-radius: 999px;
+  border: 1px solid var(--accent-soft);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+
+  /* suppress the p a::after underline — these are pills, not text links */
+  &::after {
+    display: none;
+  }
+}
+
+.author-box-links a:hover {
+  transform: translateY(-2px);
+  background: var(--accent);
+  color: var(--bg);
+  border-color: transparent;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5em;
+  margin: 2em 0 1.8em;
+  font-size: 0.95em;
+}
+
+.post-nav a {
+  min-width: 0;
+  max-width: 48%;
+  transition: color 0.3s ease;
+}
+
+.post-nav-next {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* "#" permalink on post headings, appended by blog-effects.js */
+.heading-anchor {
+  margin-left: 0.35em;
+  font-size: 0.75em;
+  font-weight: 400;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.post-content h2:hover .heading-anchor,
+.post-content h3:hover .heading-anchor,
+.post-content h2:focus-within .heading-anchor,
+.post-content h3:focus-within .heading-anchor {
+  opacity: 0.55;
+}
+
+.heading-anchor:hover,
+.heading-anchor:focus-visible {
+  opacity: 1;
 }

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Spotlight hover: track cursor position inside previews and post titles
   document
-    .querySelectorAll(".article-preview, .post-title")
+    .querySelectorAll(".article-preview, .post-title, .author-box")
     .forEach(function (el) {
       el.addEventListener("mousemove", function (e) {
         const rect = el.getBoundingClientRect();
@@ -70,4 +70,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     block.appendChild(button);
   });
+
+  // Heading anchors: kramdown already generates ids for h2/h3 — append a
+  // "#" permalink shown on hover/focus
+  document
+    .querySelectorAll(".post-content h2[id], .post-content h3[id]")
+    .forEach(function (h) {
+      const anchor = document.createElement("a");
+      anchor.className = "heading-anchor";
+      anchor.href = "#" + h.id;
+      anchor.textContent = "#";
+      anchor.setAttribute("aria-label", "Link to this section");
+      h.appendChild(anchor);
+    });
 });

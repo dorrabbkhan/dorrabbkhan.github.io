@@ -3,6 +3,7 @@ layout: post
 title: "FinOps is an architectural constraint, not an accounting problem"
 description: "Treat cloud cost like latency or availability - a strict architectural constraint baked into IaC with lifecycle policies and automated teardowns, not an afterthought for the finance team."
 date: 2026-05-02
+tags: [finops, aws, terraform]
 ---
 
 **TL;DR:** We need to treat cost the same way we treat latency or availability: as a strict architectural constraint. Relying on finance to flag an overgrown AWS bill is an anti-pattern. Real FinOps means baking automated teardowns, lifecycle policies, and rightsizing directly into your IaC.

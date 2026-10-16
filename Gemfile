@@ -4,7 +4,8 @@ gem 'jekyll'
 
 group :jekyll_plugins do
   gem 'jekyll-seo-tag'
-  gem 'jekyll-paginate'
+  gem 'jekyll-feed'
+  gem 'jekyll-redirect-from'
   gem 'jekyll-email-protect'
   gem 'jekyll-target-blank'
   gem 'jekyll-sitemap'

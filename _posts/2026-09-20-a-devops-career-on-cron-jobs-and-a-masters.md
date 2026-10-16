@@ -3,6 +3,7 @@ layout: post
 title: "Running a DevOps career on cron jobs (and a part-time Master's)"
 description: "Balancing a full-time DevOps role with a part-time Master's in AI without burning out: deliberate boundaries, async communication, and protected downtime."
 date: 2026-09-20
+tags: [career, devops, productivity]
 ---
 
 **TL;DR:** You can’t brute-force your way through a full-time senior engineering role and a graduate degree at the same time. If you try to live on adrenaline and late-night hustle, you will burn out. Surviving both comes down to clear boundaries, asynchronous communication, and knowing when to completely step away from the desk.

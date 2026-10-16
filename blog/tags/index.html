@@ -1,0 +1,29 @@
+---
+layout: default
+title: Tags
+permalink: /blog/tags/
+---
+
+<h1 class="post-title">Tags</h1>
+
+{%- assign all_tags = site.posts | map: "tags" | join: "," | split: "," | sort |
+uniq -%}
+
+<div class="tag-index">
+  {%- for tag in all_tags %} {%- assign tagged = site.posts | where_exp: "p",
+  "p.tags contains tag" %}
+  <section class="tag-group">
+    <h2 id="tag-{{ tag | slugify }}">
+      {{ tag }} <span class="tag-count">{{ tagged.size }}</span>
+    </h2>
+    <ul>
+      {%- for post in tagged %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endfor %}
+</div>

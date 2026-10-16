@@ -3,6 +3,7 @@ layout: post
 title: "Rust for the Python dev: shifting your mental model"
 description: "Moving from Python to Rust means unlearning runtime habits - the compiler forces explicit error handling and memory safety, buying you predictable, high-throughput infrastructure code."
 date: 2026-06-29
+tags: [rust, python, aws]
 ---
 
 **TL;DR:** Moving from Python to Rust requires a complete rewiring of how you think about memory, concurrency, and error handling. The real benefit of Rust in cloud infrastructure is not only raw speed, but the absolute predictability of a strict, compiler-driven architecture.

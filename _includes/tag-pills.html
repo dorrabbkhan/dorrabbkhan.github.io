@@ -1,0 +1,11 @@
+{%- comment -%}
+Tag pills linking to anchors on the /blog/tags/ index page.
+Usage: {% include tag-pills.html post=post %}
+{%- endcomment -%}
+{%- if include.post.tags.size > 0 %}
+<div class="tag-pills">
+  {%- for tag in include.post.tags %}
+  <a class="tag-pill" href="{{ '/blog/tags/' | relative_url }}#tag-{{ tag | slugify }}">{{ tag }}</a>
+  {%- endfor %}
+</div>
+{%- endif %}

@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       action: i.action,
       newTab: i.newTab,
       confirm: i.confirm,
+      search: i.search,
     };
   });
 
@@ -34,7 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function render() {
     var q = input.value.trim().toLowerCase();
     results = items.filter(function (i) {
-      return i.title.toLowerCase().indexOf(q) !== -1;
+      // search field carries description+tags for posts — matched, not shown
+      return (
+        (
+          (i.search || i.title).toLowerCase() +
+          " " +
+          i.title.toLowerCase()
+        ).indexOf(q) !== -1
+      );
     });
     active = 0;
 
@@ -107,13 +115,15 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "mailto:" + atob(window.__cmdkEmail);
       });
     } else if (r.action === "random") {
-      var posts = items.filter(function (i) {
-        return i.type === "post";
+      done(function () {
+        var posts = items.filter(function (i) {
+          return i.type === "post";
+        });
+        if (posts.length) {
+          window.location.href =
+            posts[Math.floor(Math.random() * posts.length)].url;
+        }
       });
-      if (posts.length) {
-        window.location.href =
-          posts[Math.floor(Math.random() * posts.length)].url;
-      }
     } else if (r.action === "top") {
       done(function () {
         window.scrollTo({ top: 0, behavior: "smooth" });

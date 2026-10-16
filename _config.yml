@@ -3,11 +3,9 @@ description: "DevOps & Cloud Engineer"
 baseurl: ""
 url: "https://dorrabbkhan.github.io"
 email: dorrabbk@gmail.com
+author: Dorrabb Khan
 
-# Pagination
-paginate: 4
 permalink: /blog/:year/:title/
-paginate_path: /blog/page:num/
 
 # Social media links in footer
 linkedin: "dorrabbkhan"
@@ -34,7 +32,8 @@ exclude:
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-redirect-from
   - jekyll-email-protect
   - jekyll-target-blank
   - jekyll-sitemap

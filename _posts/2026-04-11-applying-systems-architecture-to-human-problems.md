@@ -3,6 +3,7 @@ layout: post
 title: "Applying system architecture to human problems"
 description: "Scaling a mentorship program follows the same rules as scaling cloud infrastructure: cache common answers, load-balance your availability, and architect away single points of failure."
 date: 2026-04-11
+tags: [leadership, mentorship, devops]
 ---
 
 **TL;DR:** Designing highly available cloud systems and managing human communities rely on the exact same principles. Scaling an application to handle millions of requests is fundamentally similar to scaling a mentorship program: you need robust pipelines, clear documentation, and a way to load-balance your own availability.
