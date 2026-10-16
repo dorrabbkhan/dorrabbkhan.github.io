@@ -128,7 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
           window.open(r.url, "_blank", "noopener noreferrer");
         });
       } else {
-        window.location.href = r.url;
+        done(function () {
+          window.location.href = r.url;
+        });
       }
     }
   }

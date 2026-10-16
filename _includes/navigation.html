@@ -1,19 +1,164 @@
 <div class="links-wrapper">
-  <div class="links scroll">
-    <a href="{{ '/' | relative_url }}">Home</a>
-    <a href="{{ '/blog' | relative_url }}">Blog</a>
+  <nav class="links scroll" aria-label="Main navigation">
     <a
-      href="{{ '/assets/docs/CV-Muhammad_Dorrabb_Khan_Niazi-EN.pdf' | relative_url }}"
-      target="_blank"
-      rel="noopener noreferrer"
-      >CV 🇬🇧</a
+      href="{{ '/' | relative_url }}"
+      {% if page.url == '/' %}aria-current="page"{% endif %}
+      >Home</a
     >
     <a
-      href="{{ '/assets/docs/CV-Muhammad_Dorrabb_Khan_Niazi-DE.pdf' | relative_url }}"
-      target="_blank"
-      rel="noopener noreferrer"
-      >CV 🇩🇪</a
+      href="{{ '/about/' | relative_url }}"
+      {% if page.url == '/about/' %}aria-current="page"{% endif %}
+      >About</a
     >
-  </div>
-  <button id="theme-toggle" aria-label="Toggle light and dark mode">☀️</button>
+    <a
+      href="{{ '/projects/' | relative_url }}"
+      {% if page.url == '/projects/' %}aria-current="page"{% endif %}
+      >Projects</a
+    >
+    <a
+      href="{{ '/blog' | relative_url }}"
+      {% if page.url contains '/blog' %}aria-current="page"{% endif %}
+      >Blog</a
+    >
+    <div class="nav-dropdown">
+      <button
+        type="button"
+        class="nav-dropdown-toggle"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="cv-dropdown"
+      >
+        CV
+        <svg
+          class="nav-dropdown-caret"
+          viewBox="0 0 24 24"
+          width="12"
+          height="12"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+      <div class="nav-dropdown-menu" id="cv-dropdown" hidden>
+        <a
+          href="{{ '/assets/docs/CV-Muhammad_Dorrabb_Khan_Niazi-EN.pdf' | relative_url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          >English (PDF)</a
+        >
+        <a
+          href="{{ '/assets/docs/CV-Muhammad_Dorrabb_Khan_Niazi-DE.pdf' | relative_url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          >German (PDF)</a
+        >
+      </div>
+    </div>
+  </nav>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.93 4.93 1.41 1.41" />
+      <path d="m17.66 17.66 1.41 1.41" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m6.34 17.66-1.41 1.41" />
+      <path d="m19.07 4.93-1.41 1.41" />
+    </svg>
+  </button>
 </div>
+
+<script>
+  // CV dropdown: fixed-positioned menu so it isn't clipped by the
+  // horizontally-scrolling nav pill. Escape/outside click/scroll closes it.
+  (function () {
+    var dropdown = document.querySelector(".nav-dropdown");
+    if (!dropdown) return;
+    var toggle = dropdown.querySelector(".nav-dropdown-toggle");
+    var menu = document.getElementById("cv-dropdown");
+
+    // position:fixed resolves against any ancestor with transform/filter/
+    // backdrop-filter (.links has backdrop-filter, header animates in), so
+    // a menu inside the nav would never be viewport-anchored. Move it to
+    // <body> instead.
+    document.body.appendChild(menu);
+
+    var closeTimer = null;
+
+    function openMenu() {
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+      menu.classList.remove("closing");
+      menu.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+      var rect = toggle.getBoundingClientRect();
+      menu.style.top = rect.bottom + 6 + "px";
+      menu.style.left = rect.left + rect.width / 2 + "px";
+    }
+
+    function closeMenu() {
+      if (menu.hidden || menu.classList.contains("closing")) return;
+      menu.classList.add("closing");
+      toggle.setAttribute("aria-expanded", "false");
+      closeTimer = setTimeout(function () {
+        menu.hidden = true;
+        menu.classList.remove("closing");
+        closeTimer = null;
+      }, 140);
+    }
+
+    toggle.addEventListener("click", function () {
+      menu.hidden || menu.classList.contains("closing")
+        ? openMenu()
+        : closeMenu();
+    });
+
+    document.addEventListener("click", function (e) {
+      if (
+        !menu.hidden &&
+        !dropdown.contains(e.target) &&
+        !menu.contains(e.target)
+      )
+        closeMenu();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (!menu.hidden && e.key === "Escape") {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (!menu.hidden) closeMenu();
+      },
+      true,
+    );
+
+    window.addEventListener("resize", function () {
+      if (!menu.hidden) closeMenu();
+    });
+  })();
+</script>

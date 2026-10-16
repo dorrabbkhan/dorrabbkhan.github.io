@@ -52,6 +52,12 @@ main {
 
 header {
   text-align: center;
+
+  /* The clock and search icon are absolute/fixed at the top corners on
+     mobile — push the headline down so neither overlaps it */
+  @include media-query(600px) {
+    padding-top: 3.6em;
+  }
 }
 
 article {
@@ -796,11 +802,16 @@ footer {
     opacity: 0.55;
   }
 
-  /* Icon-only + non-sticky under 600px — no keyboard shortcut to hint at */
+  /* Icon-only + non-sticky under 600px — no keyboard shortcut to hint at.
+     40px square keeps it comfortably tappable. */
   @include media-query(600px) {
     position: absolute;
-    padding: 0.45em 0.6em;
+    width: 40px;
+    height: 40px;
+    padding: 0;
     gap: 0;
+    justify-content: center;
+    font-size: 1.05em;
 
     span,
     .command-palette-kbd {

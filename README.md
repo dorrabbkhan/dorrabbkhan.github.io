@@ -12,7 +12,7 @@ This is a Jekyll-based static website that showcases my professional experience 
 - Blog with pagination at `/blog`, plus a scroll progress bar on post pages
 - Command palette (`Ctrl`/`Cmd`+`K`, `/`, or the Search button): search posts & pages, toggle theme, download CVs, contact/social shortcuts, random post, copy link
 - Dark/light theme toggle in the navbar, persisted via `localStorage`, with a theme-aware favicon
-- Local time + timezone indicator (Berlin) fixed top-right
+- Local time + timezone indicator (Munich) fixed top-right
 - Cursor-following spotlight gradient and frosted-glass hover effects with glowing edge seams on post previews and titles
 - Contact information and social media links (email obfuscated via `jekyll-email-protect`)
 - Project showcase with detailed descriptions (coming soon)

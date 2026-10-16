@@ -65,28 +65,31 @@ footer {
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-.links a {
-  margin-right: 1em;
+/* Direct children only — dropdown menu links get their own styles below */
+.links > a,
+.nav-dropdown-toggle {
   position: relative;
   padding-bottom: 2px;
   transition:
     transform 0.2s ease,
     text-shadow 0.2s ease;
+}
+
+.links > a {
+  margin-right: 1em;
 
   @include media-query($on-phone) {
     margin-right: 0.7em;
   }
 }
 
-.links a:last-child {
-  margin-right: 0;
-}
-
-.links a:hover {
+.links > a:hover,
+.nav-dropdown-toggle:hover {
   transform: scale(1.05);
 }
 
-.links a::after {
+.links > a::after,
+.nav-dropdown-toggle::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -97,8 +100,121 @@ footer {
   transition: width 0.3s ease;
 }
 
-.links a:hover::after {
+.links > a:hover::after,
+.links > a[aria-current="page"]::after,
+.nav-dropdown-toggle:hover::after {
   width: 100%;
+}
+
+/* Subtle marker for the current page's nav link */
+.links > a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* CV dropdown — button styled like the sibling nav links, menu is
+   position:fixed (coordinates set in navigation.html) so it escapes the
+   .scroll pill's horizontal overflow clipping */
+.nav-dropdown {
+  display: inline-block;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0 0 2px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--accent);
+  font: inherit;
+}
+
+.nav-dropdown-toggle:hover {
+  color: var(--text);
+}
+
+.nav-dropdown-toggle[aria-expanded="true"] .nav-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-caret {
+  transition: transform 0.2s ease;
+}
+
+@keyframes nav-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+@keyframes nav-dropdown-out {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px) scale(0.97);
+  }
+}
+
+/* Same frosted surface as .command-palette-panel */
+.nav-dropdown-menu {
+  position: fixed;
+  z-index: 1000;
+  min-width: 9em;
+  padding: 0.35em;
+  border-radius: 12px;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 34, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    0 0 30px color-mix(in srgb, var(--accent-mid) 8%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: nav-dropdown-in 0.16s ease-out both;
+
+  &.closing {
+    animation: nav-dropdown-out 0.14s ease-in both;
+  }
+}
+
+[data-theme="light"] .nav-dropdown-menu {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: color-mix(in srgb, var(--accent) 16%, transparent);
+  box-shadow:
+    0 12px 40px color-mix(in srgb, var(--accent) 18%, transparent),
+    0 0 30px color-mix(in srgb, var(--accent-strong) 10%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.45em 0.9em;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.nav-dropdown-menu a:hover {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--text);
+}
+
+.nav-dropdown-menu a::after {
+  display: none;
 }
 
 /* Local time + timezone, fixed top-right corner */
@@ -114,7 +230,7 @@ footer {
 
   @include media-query(600px) {
     position: absolute;
-    top: 1.4em;
+    top: 1.2em;
     right: 1em;
     font-size: 0.72em;
     opacity: 0.65;
