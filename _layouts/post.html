@@ -25,10 +25,12 @@ layout: default
 
 <div class="post-footer">
   <div class="author-box">
-    {%- assign name_parts = site.title | split: " " -%}
-    <div class="author-box-avatar" aria-hidden="true">
-      {{ name_parts[0] | slice: 0 }}{{ name_parts[1] | slice: 0 }}
-    </div>
+    <img
+      class="author-box-avatar"
+      src="{{ '/assets/images/personal-photo.png' | relative_url }}"
+      alt="{{ site.title }}"
+      loading="lazy"
+    />
     <p class="author-box-name">{{ site.title }}</p>
     <p class="author-box-bio">Senior DevOps &amp; Cloud Engineer in Munich</p>
     <p class="author-box-links">

@@ -3,10 +3,11 @@ layout: post
 title: "High cardinality is the silent killer of observability budgets"
 description: "One innocent tag can explode into millions of billable time series. How dropping high-cardinality labels at scrape time can cut observability spend dramatically."
 date: 2026-08-15
+last_modified_at: 2026-10-16
 tags: [observability, prometheus, finops]
 ---
 
-**TL;DR:** Everyone loves adding custom tags to their logs and metrics right up until the high cardinality of your labels multiply into millions of billable time series. Fixing (and preventing) this requires strict engineering discipline.
+**TL;DR:** Everyone loves adding custom tags to their logs and metrics right up until the high cardinality of your labels multiplies into millions of billable time series. Fixing (and preventing) this requires strict engineering discipline.
 
 The core issue with managed tools like DataDog isn't always the base pricing—it's how they calculate custom metrics. A single metric is defined by the unique combination of the metric name, tags, and host. This means cardinality is multiplicative. If you have 50 microservices and you decide to add a `request_id` tag to a core metric processing millions of requests, you haven't just added a label; you've instantly created millions of unique, billable time series.
 

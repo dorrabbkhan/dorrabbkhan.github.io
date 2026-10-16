@@ -304,6 +304,13 @@ blockquote {
   background: rgba(255, 255, 255, 0.05);
 }
 
+/* Dark theme hover: --accent is a light blue, so near-black var(--bg)
+   text reads poorly against it. Deepen the fill and use white text. */
+[data-theme="dark"] .cta-buttons a:hover {
+  background: color-mix(in srgb, var(--accent) 60%, black);
+  color: #fff;
+}
+
 /* Add video class for iframes to make them responsive */
 .video {
   width: 100%;
@@ -375,6 +382,11 @@ header hr {
   background: var(--accent);
   color: var(--bg);
   transform: translateY(-2px);
+}
+
+[data-theme="dark"] .simplebutton:hover {
+  background: color-mix(in srgb, var(--accent) 60%, black);
+  color: #fff;
 }
 
 /* CTA buttons on the homepage */
@@ -1051,6 +1063,11 @@ div.highlighter-rouge:hover .copy-code-button,
   color: var(--bg);
 }
 
+[data-theme="dark"] .copy-code-button:hover {
+  background: color-mix(in srgb, var(--accent) 60%, black);
+  color: #fff;
+}
+
 /* Touch devices have no hover — keep the button visible */
 @media (hover: none) {
   .copy-code-button {
@@ -1132,8 +1149,11 @@ div.highlighter-rouge:hover .copy-code-button,
   position: relative;
   isolation: isolate;
   text-align: center;
-  margin-bottom: 2.2em;
-  padding: 1.8em 1.5em 1.5em;
+  /* hug the content: full-width box with a thin centered column
+     looked empty/awkward */
+  max-width: 480px;
+  margin: 0 auto 2.2em;
+  padding: 1.4em 1.5em 1.3em;
   border-radius: 12px;
   border: 1px solid var(--accent-soft);
   background: rgba(255, 255, 255, 0.4);
@@ -1185,11 +1205,11 @@ div.highlighter-rouge:hover .copy-code-button,
   margin-bottom: 0.25em;
 }
 
-/* Monogram circle standing in for a photo */
+/* Photo circle at the top of the author box */
 .author-box-avatar {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 0.9em;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 0.7em;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1203,6 +1223,7 @@ div.highlighter-rouge:hover .copy-code-button,
     var(--accent),
     color-mix(in srgb, var(--accent) 55%, transparent)
   );
+  object-fit: cover;
   box-shadow:
     0 0 0 2px var(--bg),
     0 0 0 3px var(--accent-soft);
@@ -1223,7 +1244,7 @@ div.highlighter-rouge:hover .copy-code-button,
   justify-content: center;
   gap: 0.6em;
   font-size: 0.9em;
-  margin-top: 0.9em;
+  margin-top: 0.7em;
 }
 
 .author-box-links a {
@@ -1247,6 +1268,11 @@ div.highlighter-rouge:hover .copy-code-button,
   background: var(--accent);
   color: var(--bg);
   border-color: transparent;
+}
+
+[data-theme="dark"] .author-box-links a:hover {
+  background: color-mix(in srgb, var(--accent) 60%, black);
+  color: #fff;
 }
 
 .post-nav {
@@ -1287,4 +1313,163 @@ div.highlighter-rouge:hover .copy-code-button,
 .heading-anchor:hover,
 .heading-anchor:focus-visible {
   opacity: 1;
+}
+
+/* ── About page ────────────────────────────────────────────────── */
+
+/* Column of left-aligned content matching the .post-content width */
+.about {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Circular headshot at the top of the about page — same ring motif
+   as .author-box-avatar */
+.about-photo {
+  display: block;
+  width: 140px;
+  height: 140px;
+  margin: 0.5em auto 1.5em;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 4px var(--accent-soft),
+    0 8px 30px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+@include media-query($on-palm) {
+  .about-photo {
+    width: 112px;
+    height: 112px;
+  }
+}
+
+/* Section headings: centred with a short accent-gradient underline */
+.about-heading {
+  text-align: center;
+  font-size: 1.35em;
+  margin: 1.4em 0 1.2em;
+}
+
+.about-heading::after {
+  content: "";
+  display: block;
+  width: 3.2em;
+  height: 2px;
+  margin: 0.5em auto 0;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent-mid),
+    var(--accent-strong)
+  );
+}
+
+/* Vertical timeline for experience / education / community */
+.timeline {
+  margin-left: 0.4em;
+  padding-left: 1.4em;
+  border-left: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 2em;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0.4em;
+}
+
+/* Dot centred on the rail, same gradient as .author-box-avatar */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.4em - 6px);
+  top: 0.45em;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.timeline-role {
+  font-weight: 600;
+  font-size: 1.05em;
+  margin-bottom: 0.1em;
+}
+
+/* .post-meta centres itself — dates on the timeline stay left */
+.timeline-meta {
+  text-align: left;
+  margin-bottom: 0.9em;
+}
+
+.timeline-item ul {
+  margin: 0.5em 0 0;
+  padding-left: 1.2em;
+}
+
+.timeline-item li {
+  margin-bottom: 0.45em;
+}
+
+.timeline-item li::marker {
+  color: var(--accent);
+}
+
+.timeline-desc,
+.timeline-note {
+  margin-bottom: 0.4em;
+}
+
+.timeline-note {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+/* Promotion path under the role bullets */
+.timeline-path {
+  margin-top: 1em;
+  font-size: 0.85em;
+  opacity: 0.75;
+}
+
+.timeline-path strong {
+  color: var(--accent);
+}
+
+/* Skill groups: small uppercase label over a row of glass tag pills */
+.skill-group {
+  margin-bottom: 1.4em;
+}
+
+.skill-label {
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.55em;
+}
+
+.skill-group .tag-pills {
+  justify-content: flex-start;
+  margin: 0;
+}
+
+.skill-group .tag-pill {
+  font-size: 0.8em;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .skill-group .tag-pill {
+  background: rgba(255, 255, 255, 0.06);
 }

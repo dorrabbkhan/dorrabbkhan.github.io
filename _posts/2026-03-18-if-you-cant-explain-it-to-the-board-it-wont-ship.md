@@ -3,10 +3,11 @@ layout: post
 title: "If you can't explain it to the Board, it won't ship"
 description: "The hardest part of senior engineering isn't the code - it's translating technical trade-offs into cost, risk, and speed for stakeholders. A framework and ADR blueprint for winning buy-in."
 date: 2026-03-18
+last_modified_at: 2026-10-16
 tags: [leadership, career, communication]
 ---
 
-**TL;DR:** The hardest part of an engineering role isn't writing the code; it's translating technical trade-offs to people who only care about the bottom line. You can design the most elegant system in the world, but it won't ship if you can't get stakeholder buy-in. It is crucual to have a framework for translating complex cloud infrastructure changes that bridge the gap between engineering and the business.
+**TL;DR:** The hardest part of an engineering role isn't writing the code; it's translating technical trade-offs to people who only care about the bottom line. You can design the most elegant system in the world, but it won't ship if you can't get stakeholder buy-in. It is crucial to have a framework for translating complex cloud infrastructure changes that bridge the gap between engineering and the business.
 
 We spend years mastering our tech stack, but almost zero time learning how to talk about it. When you transition into a senior role, the bottleneck stops being your ability to write a Terraform module. The real bottleneck becomes your ability to explain _why_ that module is necessary to a stakeholder who just wants the feature shipped, or a Board staring at a massive cloud bill.
 

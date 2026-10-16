@@ -3,6 +3,7 @@ layout: post
 title: "Rust for the Python dev: shifting your mental model"
 description: "Moving from Python to Rust means unlearning runtime habits - the compiler forces explicit error handling and memory safety, buying you predictable, high-throughput infrastructure code."
 date: 2026-06-29
+last_modified_at: 2026-10-16
 tags: [rust, python, aws]
 ---
 
@@ -10,7 +11,7 @@ tags: [rust, python, aws]
 
 Moving from Python to Rust feels less like learning a new language and more like unlearning bad habits. You don't just swap out `def` for `fn` and carry on. You have to fundamentally change how you reason about memory boundaries, state mutations, and what actually constitutes a "safe" concurrent operation.
 
-When I was working on migrating a legacy codebase from Python 2.7 to modern Python 3.8, the mental model was entirely runtime-dependent. You write the logic, write the tests, push to staging, and inevitably discover a handful of untangled errors that slipped through.
+When I was working on migrating a legacy codebase from Python 2.7 to modern Python 3.8, the mental model was entirely runtime-dependent. You write the logic, write the tests, push to staging, and inevitably discover a handful of unhandled errors that slipped through.
 
 Contrast that with my experience engineering high-throughput microservices from scratch with Rust. The strict, compiler-driven discipline of Rust forces you to confront every possible failure state before the code even compiles. It is a massive hurdle at first, but it completely changes your operational baseline long-term.
 
@@ -27,7 +28,7 @@ Let's look at a minimal example of polling an AWS SQS queue. In a traditional Py
 ```rust
 use aws_sdk_sqs::{Client, Error};
 
-async fn poll_sqs_queue(client: &Client, queue_url: &String) -> Result<(), Error> {
+async fn poll_sqs_queue(client: &Client, queue_url: &str) -> Result<(), Error> {
     let receive_message_output = client
         .receive_message()
         .queue_url(queue_url)
@@ -35,16 +36,17 @@ async fn poll_sqs_queue(client: &Client, queue_url: &String) -> Result<(), Error
         .send()
         .await?; // The '?' forces explicit error propagation
 
-    // Rust forces us to handle the Option explicitly. No implicit NoneTypes.
-    if let Some(messages) = receive_message_output.messages() {
-        for msg in messages {
+    // messages() returns a slice in aws-sdk-sqs 1.x, so we check it directly.
+    if receive_message_output.messages().is_empty() {
+        println!("Queue empty, gracefully backing off.");
+    } else {
+        for msg in receive_message_output.messages() {
+            // Rust forces us to handle the Option explicitly. No implicit NoneTypes.
             if let Some(body) = msg.body() {
                 println!("Processing message payload: {}", body);
                 // Pipeline logic goes here
             }
         }
-    } else {
-        println!("Queue empty, gracefully backing off.");
     }
 
     Ok(())
@@ -52,6 +54,6 @@ async fn poll_sqs_queue(client: &Client, queue_url: &String) -> Result<(), Error
 
 ```
 
-Notice the heavy reliance on `Result` and `Option` types. There are no null pointers or runtime exceptions lurking in the pipeline. You are forced to explicitly acknowledge that a message body might not exist, or that the network call might fail.
+Notice the heavy reliance on `Result` and `Option` types. There are no null pointers or runtime exceptions lurking in the pipeline. You are forced to explicitly acknowledge that the queue might be empty, that a message body might not exist, or that the network call might fail.
 
 This shift from runtime hope to compile-time guarantees is a steep hill to climb. But once you rewire your mental model to satisfy the borrow checker, the anxiety of deploying asynchronous cloud infrastructure virtually disappears.

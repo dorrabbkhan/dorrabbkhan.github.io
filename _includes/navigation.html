@@ -10,11 +10,14 @@
       {% if page.url == '/about/' %}aria-current="page"{% endif %}
       >About</a
     >
+    {%- comment -%}
+    Hidden for now: projects page is a stub. Remove this comment block to restore.
     <a
       href="{{ '/projects/' | relative_url }}"
       {% if page.url == '/projects/' %}aria-current="page"{% endif %}
       >Projects</a
     >
+    {%- endcomment -%}
     <a
       href="{{ '/blog' | relative_url }}"
       {% if page.url contains '/blog' %}aria-current="page"{% endif %}

@@ -3,6 +3,7 @@ layout: post
 title: "The silent productivity killer: Local dev environments"
 description: "If onboarding takes a 30-page wiki and three days of debugging, your local setup is the real bottleneck. Containerize everything and treat DevEx as a core infrastructure metric."
 date: 2026-07-08
+last_modified_at: 2026-10-16
 tags: [devex, docker]
 ---
 
@@ -18,13 +19,12 @@ Cleaning up deployment platforms and standardizing the local stack is directly c
 
 ## Containerizing the Friction Away
 
-The solution is strict, reproducible environments. In my experience, migrating to fully containerized dev environments fundamentally changes the engineering culture. When we adopted `docker-compose` dev setups, we managed to streamline onboarding and accelerate our deployment cycles significantly, just because "it works on my machine tho" stopped being a valid excuse.
+The solution is strict, reproducible environments. In my experience, migrating to fully containerized dev environments fundamentally changes the engineering culture. When we adopted `docker compose` dev setups, we managed to streamline onboarding and accelerate our deployment cycles significantly, just because "it works on my machine tho" stopped being a valid excuse.
 
 Instead of a README bloated up with bash commands, a new engineer should just need this:
 
 ```yaml
 # docker-compose.dev.yml
-version: "3.8"
 services:
   api:
     build:
@@ -51,7 +51,7 @@ volumes:
   pgdata:
 ```
 
-One `docker-compose up` and the entire stack is ready.
+One `docker compose up` and the entire stack is ready.
 
 ## Tools to Fix Your DevEx
 
