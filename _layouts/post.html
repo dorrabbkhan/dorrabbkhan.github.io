@@ -10,7 +10,11 @@ layout: default
   <time datetime="{{ page.date | date_to_xmlschema }}">
     {{ page.date | date: "%B %-d, %Y" }}
   </time>
-  · {% include reading-time.html post=page %}
+  {%- if page.last_modified_at %} · Updated
+  <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">
+    {{ page.last_modified_at | date: "%B %-d, %Y" }}
+  </time>
+  {%- endif %} · {% include reading-time.html post=page %}
 </p>
 
 {% include tag-pills.html post=page %}

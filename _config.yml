@@ -1,9 +1,22 @@
 title: Dorrabb Khan
-description: "DevOps & Cloud Engineer"
+description: "Senior DevOps & Cloud Engineer in Munich. Writing about AWS, FinOps, observability and developer experience."
 baseurl: ""
 url: "https://dorrabbkhan.github.io"
 email: dorrabbk@gmail.com
-author: Dorrabb Khan
+lang: en
+
+author:
+  name: Dorrabb Khan
+  url: "https://dorrabbkhan.github.io"
+
+social:
+  name: Dorrabb Khan
+  links:
+    - https://www.linkedin.com/in/dorrabbkhan
+    - https://github.com/dorrabbkhan
+
+twitter:
+  card: summary_large_image
 
 permalink: /blog/:year/:title/
 
@@ -23,12 +36,21 @@ sass:
   sass_dir: /assets/css/_sass
   style: compressed
 
+# Default front matter: og:image for every page
+# (jekyll-seo-tag reads `image` from front matter / defaults)
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-default.png
+
 include:
   - _pages
 
 exclude:
   - README.md
   - LICENSE.md
+  - tools
 
 plugins:
   - jekyll-seo-tag
