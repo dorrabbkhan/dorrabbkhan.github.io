@@ -52,7 +52,6 @@ main {
 
 header {
   text-align: center;
-  position: relative;
 }
 
 article {
@@ -228,27 +227,11 @@ blockquote {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 4s ease infinite;
-  text-shadow: 0 0 36px rgba(56, 189, 248, 0.45);
-}
-
-/* Dark headline halo: painted inside the page (fades out before the top edge)
-   so it doesn't get clipped at the body boundary during overscroll */
-[data-theme="dark"] header::before {
-  content: "";
-  position: absolute;
-  top: -2.8em;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 115%;
-  height: calc(100% + 3.5em);
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(
-    ellipse 50% 45% at 50% 42%,
-    rgba(56, 189, 248, 0.16) 0%,
-    rgba(56, 189, 248, 0.07) 40%,
-    transparent 70%
-  );
+  /* Keep the largest blur under the 3em body padding so the glow
+     feathers out before the top edge and doesn't clip on overscroll */
+  text-shadow:
+    0 0 18px rgba(56, 189, 248, 0.55),
+    0 0 42px rgba(56, 189, 248, 0.4);
 }
 
 @keyframes gradient-shift {
