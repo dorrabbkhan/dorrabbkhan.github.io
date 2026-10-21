@@ -51,6 +51,7 @@ exclude:
   - README.md
   - LICENSE.md
   - tools
+  - scripts
 
 # Feed: keep every post so the whole archive can be imported elsewhere
 feed:
