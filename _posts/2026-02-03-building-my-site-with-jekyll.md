@@ -23,5 +23,3 @@ date: 2026-02-03
 I write a post, run `git push`, and GitHub Pages handles the rest.
 
 Give yourself a break on your personal projects. Sometimes a folder full of Markdown files is all you need.
-
----
