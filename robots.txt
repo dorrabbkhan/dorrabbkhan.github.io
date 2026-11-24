@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dorrabbkhan.github.io/sitemap.xml
+Sitemap: https://dorrabbkhan.com/sitemap.xml

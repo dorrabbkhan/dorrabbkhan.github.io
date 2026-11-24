@@ -1,6 +1,6 @@
 # Dorrabb Khan - Personal Portfolio
 
-This repository contains the source code for my personal portfolio website, hosted at [dorrabbkhan.github.io](https://dorrabbkhan.github.io).
+This repository contains the source code for my personal portfolio website, hosted at [dorrabbkhan.com](https://dorrabbkhan.com).
 
 ## Overview
 
@@ -40,8 +40,8 @@ This is a Jekyll-based static website that showcases my professional experience 
 1. Clone this repository
 
    ```
-   git clone https://github.com/dorrabbkhan/dorrabbkhan.github.io.git
-   cd dorrabbkhan.github.io
+   git clone https://github.com/dorrabbkhan/dorrabbkhan.com.git
+   cd dorrabbkhan.com
    ```
 
 2. Install dependencies
