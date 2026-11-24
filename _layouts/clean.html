@@ -21,6 +21,16 @@
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
 
     <script src="{{ '/assets/js/theme-switcher.js' | relative_url }}"></script>
+    <script>
+      if (location.hostname === "dorrabbkhan.github.io") {
+        location.replace(
+          "https://dorrabbkhan.com" +
+            location.pathname +
+            location.search +
+            location.hash,
+        );
+      }
+    </script>
   </head>
 
   <body>
